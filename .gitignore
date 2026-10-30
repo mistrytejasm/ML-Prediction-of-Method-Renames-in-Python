@@ -1,25 +1,65 @@
+# ---------------------------------------------------------------- raw data
 # Raw ActRef commits (125 MB, 1,160 folders) - download commits.zip from
-# https://figshare.com/s/984c7a39266137e29c37 and unzip into data/raw_act/
+# https://figshare.com/s/984c7a39266137e29c37 and unzip into data/raw/actref/
+data/raw/actref/commits/
 data/raw_act/
 
-# Keep the empty raw folders for PyRef and ICSE 2022
-data/raw_py/*
-!data/raw_py/.gitkeep
-data/raw_Icse/*
-!data/raw_Icse/.gitkeep
+# External datasets: keep the folders, not the downloads
+data/external/*/*
+!data/external/*/.gitkeep
 
-# OS / editor files
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/
+# ---------------------------------------------------------------- secrets / env
+.env
+.env.*
+!.env.example
+*.env
+.secrets
+credentials.json
 
-# Python
+# ---------------------------------------------------------------- python envs / packages
+.venv/
+venv/
+env/
+ENV/
+.conda/
+conda-env/
+__pypackages__/
+pip-wheel-metadata/
+*.egg-info/
+.eggs/
+build/
+dist/
+wheels/
+site-packages/
+pip-log.txt
+
+# ---------------------------------------------------------------- python caches
 __pycache__/
 *.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
 .ipynb_checkpoints/
-venv/
-.venv/
+
+# ---------------------------------------------------------------- logs / temp
+logs/
+*.log
+*.tmp
+tmp/
+
+# ---------------------------------------------------------------- OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+.antigravity/
 
 # Office lock files
 ~$*
+
+# ---------------------------------------------------------------- regenerated outputs (reproducible)
+reports/audit/regenerated/

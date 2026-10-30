@@ -1,0 +1,3 @@
+commit,file,class,old_name,new_name,similarity,same_args,old_lineno,old_loc
+6d57bf01f9b4df75ef49f0e621a8723bb0f071c8,autokeras/engine/tuner.py,AutoTuner,_on_train_end,_on_train_begin,1.0,True,51,3
+d86b350d116d95d61510552814752a2fb8d99c90,elephas/ml/params.py,HasValidationSplit,get_verbosity,get_validation_split,1.0,True,175,2

@@ -1,0 +1,64 @@
+{
+  "root": "data/raw/actref/commits",
+  "commit_folders": 1160,
+  "unique_commits": 1159,
+  "folders_not_named_as_a_commit_hash": [
+    "dd7f9fa8b43d42edf20483b30ff7d4591270eaf6_\u03c3\u00eb\u00bb\u00b5\u00a3\u00bc"
+  ],
+  "duplicate_commit_folders (skipped by the pipeline)": {
+    "dd7f9fa8b43d42edf20483b30ff7d4591270eaf6_\u03c3\u00eb\u00bb\u00b5\u00a3\u00bc": "byte-identical copy of commit folder dd7f9fa8b43d42edf20483b30ff7d4591270eaf6"
+  },
+  "files_total": 11842,
+  "files_by_extension": {
+    ".py": 10668,
+    ".DS_Store": 1164,
+    ".sonar_lock": 5,
+    ".txt": 5
+  },
+  "py_files_in_before": 5334,
+  "py_files_in_after": 5334,
+  "commits_missing_before_folder": 0,
+  "commits_missing_after_folder": 0,
+  "files_only_in_before (deleted/moved)": 589,
+  "files_only_in_after (added/moved)": 589,
+  "unparseable_py_files": 5,
+  "commits_without_usable_pair": 16,
+  "non_python_files (excluding .DS_Store)": [
+    "0a9ec3c2214cda5a7d41a3d4749b891833b5ecbf/.scannerwork/.sonar_lock",
+    "0a9ec3c2214cda5a7d41a3d4749b891833b5ecbf/.scannerwork/report-task.txt",
+    "0a9ec3c2214cda5a7d41a3d4749b891833b5ecbf/After/.scannerwork/.sonar_lock",
+    "0a9ec3c2214cda5a7d41a3d4749b891833b5ecbf/After/.scannerwork/report-task.txt",
+    "0a9ec3c2214cda5a7d41a3d4749b891833b5ecbf/Before/.scannerwork/.sonar_lock",
+    "0a9ec3c2214cda5a7d41a3d4749b891833b5ecbf/Before/.scannerwork/report-task.txt",
+    "445387698dad8bcdccb53b7708aba564c1a5c319/After/.scannerwork/.sonar_lock",
+    "445387698dad8bcdccb53b7708aba564c1a5c319/After/.scannerwork/report-task.txt",
+    "983bceff6288a6d240a0a06dfd49c194d4ed30b6/.scannerwork/.sonar_lock",
+    "983bceff6288a6d240a0a06dfd49c194d4ed30b6/.scannerwork/report-task.txt"
+  ],
+  "unparseable_examples": [
+    "11fb2f77b89f43b4c2d0ecb359872cfccf204f01/After/nn_wtf#tests#predictor_test.py",
+    "8138b2cf8deeaf9bcb94eaa9ab49fb3c8cce7759/Before/tests#unit#test_bisector.py",
+    "9f1aecdae6c3405f745e2f3e671b3f165aceb742/After/lib#tests#streamlit#scriptrunner#test_data#compile_error.py",
+    "b9ffc2cc041e95367a84059e57f8508c479739cc/Before/tgen#parallel_percrank_train.py",
+    "b9ffc2cc041e95367a84059e57f8508c479739cc/After/tgen#parallel_percrank_train.py"
+  ],
+  "commits_without_usable_pair_examples": [
+    "0d339e8d7f4da6b9bd03d017b5e3c3bb1f257acc",
+    "1c94f64c668653cb565aa3de8d34c2a3f16368fc",
+    "2ad3aeb793ae0f041d5200baf1a24f2d29f1b547",
+    "34adec7a03f9179dcf37f3198fada5b1ea410353",
+    "48df42914f329be28b1ffaa79159c9315b2b25c2",
+    "4bb1efaa9f80044bb7d9d7e6246cdbc354496aa4",
+    "78907362a6f94c09c4df35763b7d4a27731fa995",
+    "7f793dd1e30038aa637c9aa3c848f9b2ba0ba5e5",
+    "888660a87be3baf275d05f2fae88c37b6937a399",
+    "88c6fbf903d55a6e6103a306af9f97e54b6311d1",
+    "8c1fe54e376d2048c357278f7b5f0d4afbf82756",
+    "8c70687b9e5f506169bd20736bd5a6bbd6cba0a5",
+    "c3bff7a2c5e86d6df8dcd99f28281df541e77129",
+    "d148f1fd85b010f755e4deadee795382cebb60a3",
+    "d55d036ff383004e0903bab7ff30d8ea0e848e9b",
+    "eec1d55cb4f4778d3f06012dcd9cc3504ea4c5b0"
+  ],
+  "tree_sha256": "8cf3d2f30f6298645356bcace2a076f553481c0f6032868361cf61e043ee3e58"
+}

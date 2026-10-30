@@ -1,0 +1,219 @@
+{
+  "summary": {
+    "candidates": 430,
+    "test_methods": 96,
+    "non_test": 334,
+    "auto_accept_rule": 185,
+    "auto_accepted_file": 183,
+    "removed_by_hand": 2,
+    "review_rows": 149,
+    "review_Y": 118,
+    "review_N": 31,
+    "review_human_confirmed": 0,
+    "pool_before_cap": 301,
+    "excluded_by_cap": 58,
+    "positives": 243,
+    "positives_by_label_source": {
+      "auto_confident": 167,
+      "hand_checked": 76
+    },
+    "positives_by_provenance": {
+      "auto_rule_confident": 167,
+      "ai_reviewed_unconfirmed": 76
+    },
+    "positives_by_rename_type": {
+      "word_replaced": 66,
+      "word_added": 48,
+      "visibility_only": 43,
+      "restructured": 28,
+      "word_removed": 22,
+      "spelling_or_inflection": 19,
+      "case_or_style_only": 17
+    },
+    "rename_type_by_provenance": {
+      "ai_reviewed_unconfirmed": {
+        "case_or_style_only": 2,
+        "restructured": 12,
+        "spelling_or_inflection": 3,
+        "visibility_only": 7,
+        "word_added": 22,
+        "word_removed": 6,
+        "word_replaced": 24
+      },
+      "auto_rule_confident": {
+        "case_or_style_only": 15,
+        "restructured": 16,
+        "spelling_or_inflection": 16,
+        "visibility_only": 36,
+        "word_added": 26,
+        "word_removed": 16,
+        "word_replaced": 42
+      }
+    },
+    "candidate_outcomes": {
+      "final_positive": 243,
+      "dropped_test_method": 96,
+      "dropped_by_commit_cap": 58,
+      "rejected_in_review": 31,
+      "dropped_from_auto_accepted_by_hand": 2
+    },
+    "candidate_rename_types": {
+      "word_added": 124,
+      "word_replaced": 101,
+      "restructured": 61,
+      "visibility_only": 50,
+      "word_removed": 35,
+      "spelling_or_inflection": 31,
+      "case_or_style_only": 28
+    },
+    "raw": {
+      "negative_unchanged": 26802,
+      "positive_ok": 243,
+      "negative_body_or_signature_changed": 4172,
+      "rows_with_duplicate_definitions": 308,
+      "problems": 0
+    }
+  },
+  "checks": [
+    {
+      "check": "candidates: row count",
+      "status": "PASS",
+      "detail": "430 rows (expected 430)"
+    },
+    {
+      "check": "candidates: one row per (commit, file, class, old_name)",
+      "status": "PASS",
+      "detail": "0 duplicates"
+    },
+    {
+      "check": "candidates: one row per (commit, file, class, new_name)",
+      "status": "PASS",
+      "detail": "0 duplicates"
+    },
+    {
+      "check": "candidates: similarity within [0.70, 1.0]",
+      "status": "PASS",
+      "detail": "min 0.7, max 1.0"
+    },
+    {
+      "check": "candidates: no dunder methods",
+      "status": "PASS",
+      "detail": "0 dunder rows"
+    },
+    {
+      "check": "candidates: test methods (dropped in the next step)",
+      "status": "PASS",
+      "detail": "96 test methods"
+    },
+    {
+      "check": "auto-accepted: file matches the rule (similarity >= 0.9 and same args)",
+      "status": "WARN",
+      "detail": "rule gives 185, file has 183; 2 rule pairs missing from the file (removed by hand, not by code), 0 extra"
+    },
+    {
+      "check": "review: blank sheet holds exactly the non-confident, non-test candidates",
+      "status": "PASS",
+      "detail": "149 rows, rule gives 149"
+    },
+    {
+      "check": "review: completed sheet has the same rows as the blank sheet",
+      "status": "PASS",
+      "detail": "149 rows"
+    },
+    {
+      "check": "review: every decision is Y or N",
+      "status": "PASS",
+      "detail": "Y 118, N 31, other 0"
+    },
+    {
+      "check": "review: decisions confirmed by a human",
+      "status": "WARN",
+      "detail": "0 of 149 rows have confirmed_by_human filled in; note sources: {'Claude first guess': 137, 'Decided by Claude': 12}"
+    },
+    {
+      "check": "cap: candidate pool before the cap",
+      "status": "PASS",
+      "detail": "301 (expected 301)"
+    },
+    {
+      "check": "cap: re-running the cap (seed 42) reproduces rename_positive_labels.csv",
+      "status": "PASS",
+      "detail": "0 differing keys"
+    },
+    {
+      "check": "cap: at most 5 positives per commit",
+      "status": "PASS",
+      "detail": "max 5, commits at the cap 11"
+    },
+    {
+      "check": "cap: every excluded candidate comes from a commit with more than 5 candidates",
+      "status": "PASS",
+      "detail": "58 excluded from 7 commits"
+    },
+    {
+      "check": "positives: 243 rows, all renamed = 1",
+      "status": "PASS",
+      "detail": "243 rows, values [np.int64(1)]"
+    },
+    {
+      "check": "positives: unique key",
+      "status": "PASS",
+      "detail": "0 duplicates"
+    },
+    {
+      "check": "positives: label_source values",
+      "status": "PASS",
+      "detail": "{'auto_confident': 167, 'hand_checked': 76}"
+    },
+    {
+      "check": "positives: 'hand_checked' rows are really human-confirmed",
+      "status": "WARN",
+      "detail": "76 of 76 hand_checked rows have no human confirmation -> recommended provenance value: ai_reviewed_unconfirmed"
+    },
+    {
+      "check": "v2: every positive appears exactly once",
+      "status": "PASS",
+      "detail": "once 243, missing 0, more than once 0"
+    },
+    {
+      "check": "v2: renamed = 1 rows are exactly the positives",
+      "status": "PASS",
+      "detail": "243 renamed rows"
+    },
+    {
+      "check": "v2: unique key (commit, file, class, name)",
+      "status": "PASS",
+      "detail": "0 duplicates"
+    },
+    {
+      "check": "v2: no rejected, capped or test candidate is labelled 0",
+      "status": "PASS",
+      "detail": "0 of 187 non-positive candidates appear in v2"
+    },
+    {
+      "check": "trace: every candidate's outcome is explained",
+      "status": "PASS",
+      "detail": "{'final_positive': 243, 'dropped_test_method': 96, 'dropped_by_commit_cap': 58, 'rejected_in_review': 31, 'dropped_from_auto_accepted_by_hand': 2}"
+    },
+    {
+      "check": "raw: positives present in Before, old name gone and new name present in After",
+      "status": "PASS",
+      "detail": "243 positives checked, 0 problems"
+    },
+    {
+      "check": "raw: negatives keep the same class + name in After",
+      "status": "PASS",
+      "detail": "30974 negatives checked, 0 problems"
+    },
+    {
+      "check": "raw: negatives whose code changed while keeping their name",
+      "status": "PASS",
+      "detail": "26802 unchanged, 4172 changed body/signature (still valid negatives: the label means 'name kept', not 'code unchanged')"
+    },
+    {
+      "check": "raw: rows whose class+name is defined more than once in the Before file",
+      "status": "WARN",
+      "detail": "308 rows (e.g. @property getter + @x.setter share a name; the feature code keeps only the last definition)"
+    }
+  ]
+}

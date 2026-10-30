@@ -1,0 +1,162 @@
+[
+  {
+    "check": "columns match the schema (names and order)",
+    "status": "PASS",
+    "detail": "59 columns, schema 59"
+  },
+  {
+    "check": "feature list is the 46 documented features",
+    "status": "PASS",
+    "detail": "46 features"
+  },
+  {
+    "check": "no identifier, target, label or metadata column is a feature",
+    "status": "PASS",
+    "detail": "offending: []"
+  },
+  {
+    "check": "row count matches the schema",
+    "status": "PASS",
+    "detail": "31209 rows"
+  },
+  {
+    "check": "file checksum matches the schema",
+    "status": "PASS",
+    "detail": "e6a8fd476feb8740"
+  },
+  {
+    "check": "target is binary 0/1",
+    "status": "PASS",
+    "detail": "values [0, 1]"
+  },
+  {
+    "check": "positives / negatives",
+    "status": "PASS",
+    "detail": "243 positives, 30966 negatives, rate 0.7786%"
+  },
+  {
+    "check": "one row per (commit, file, class, name)",
+    "status": "PASS",
+    "detail": "0 duplicates"
+  },
+  {
+    "check": "commit ids are 40-character hashes",
+    "status": "PASS",
+    "detail": "0 invalid"
+  },
+  {
+    "check": "file paths end with .py",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "check": "method names are non-empty",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "check": "all features are numeric",
+    "status": "PASS",
+    "detail": "non-numeric: []"
+  },
+  {
+    "check": "no missing feature values",
+    "status": "PASS",
+    "detail": "0 missing"
+  },
+  {
+    "check": "no infinite feature values",
+    "status": "PASS",
+    "detail": "0"
+  },
+  {
+    "check": "binary flags are 0/1",
+    "status": "PASS",
+    "detail": "bad: []"
+  },
+  {
+    "check": "ratios are within [0, 1]",
+    "status": "PASS",
+    "detail": "bad: []"
+  },
+  {
+    "check": "count features are non-negative",
+    "status": "PASS",
+    "detail": "bad: []"
+  },
+  {
+    "check": "size features are at least 1",
+    "status": "PASS",
+    "detail": "bad: []"
+  },
+  {
+    "check": "no constant features",
+    "status": "PASS",
+    "detail": "constant: []"
+  },
+  {
+    "check": "binary flags with fewer than 30 ones",
+    "status": "PASS",
+    "detail": "{}"
+  },
+  {
+    "check": "feature pairs with |r| >= 0.95",
+    "status": "WARN",
+    "detail": "[('in_class', 'class_depth', 0.997)]"
+  },
+  {
+    "check": "renamed = 1 rows are exactly rename_positive_labels.csv",
+    "status": "PASS",
+    "detail": "missing 0, extra 0"
+  },
+  {
+    "check": "label_source values",
+    "status": "PASS",
+    "detail": "{'negative_name_kept': 30966, 'auto_confident': 167, 'hand_checked': 76}"
+  },
+  {
+    "check": "rename types are valid and match the target",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "check": "meta_new_name is set for positives only",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "check": "positives without human confirmation",
+    "status": "WARN",
+    "detail": "76 positives are ai_reviewed_unconfirmed"
+  },
+  {
+    "check": "each commit belongs to exactly one project group",
+    "status": "PASS",
+    "detail": "323 groups"
+  },
+  {
+    "check": "project group is never empty",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "check": "repeated observations (same name + features) stay inside one project group",
+    "status": "PASS",
+    "detail": "1407 rows in 583 clusters, 0 span several groups"
+  },
+  {
+    "check": "rows dropped from v2 come only from duplicate commit folders",
+    "status": "PASS",
+    "detail": "8 dropped, 0 added"
+  },
+  {
+    "check": "labels and all non-leak-fixed features equal the original v2 for every kept row",
+    "status": "PASS",
+    "detail": "unexpected differences in: []"
+  },
+  {
+    "check": "leak fix: rows whose call_sites / rel_* values differ from v2",
+    "status": "PASS",
+    "detail": "7399 rows (104 positives); changed values per column: {'call_sites': 306, 'rel_name_len': 6373, 'rel_name_tokens': 6202, 'rel_loc': 6429, 'rel_n_params': 6246, 'rel_n_calls': 6389, 'rel_cyclomatic': 6225, 'rel_doc_len': 4858, 'rel_call_sites': 7193, 'rel_name_body_overlap': 6112}"
+  }
+]
