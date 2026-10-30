@@ -1,0 +1,25 @@
+# Raw ActRef commits (125 MB, 1,160 folders) - download commits.zip from
+# https://figshare.com/s/984c7a39266137e29c37 and unzip into data/raw_act/
+data/raw_act/
+
+# Keep the empty raw folders for PyRef and ICSE 2022
+data/raw_py/*
+!data/raw_py/.gitkeep
+data/raw_Icse/*
+!data/raw_Icse/.gitkeep
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+venv/
+.venv/
+
+# Office lock files
+~$*
