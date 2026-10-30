@@ -1,0 +1,22 @@
+feature_set,n_features,model,pr_auc,pr_auc_std,f1,mcc,precision,recall
+1. All features,46,Logistic Regression,0.017,0.005,0.028,0.05,0.014,0.607
+1. All features,46,Random Forest,0.015,0.005,0.0,-0.001,0.0,0.0
+1. All features,46,LightGBM,0.018,0.006,0.03,0.021,0.021,0.058
+2. Without file-level (old 34 minus 2),32,Logistic Regression,0.015,0.003,0.023,0.035,0.012,0.566
+2. Without file-level (old 34 minus 2),32,Random Forest,0.009,0.001,0.0,-0.003,0.0,0.0
+2. Without file-level (old 34 minus 2),32,LightGBM,0.01,0.001,0.018,0.007,0.01,0.09
+3. Name only,11,Logistic Regression,0.012,0.004,0.019,0.016,0.01,0.453
+3. Name only,11,Random Forest,0.009,0.001,0.015,-0.003,0.008,0.19
+3. Name only,11,LightGBM,0.008,0.001,0.016,0.004,0.008,0.259
+4. Code only,16,Logistic Regression,0.009,0.002,0.016,0.01,0.008,0.632
+4. Code only,16,Random Forest,0.009,0.001,0.011,-0.006,0.006,0.095
+4. Code only,16,LightGBM,0.013,0.008,0.016,0.002,0.008,0.207
+5. Context only,7,Logistic Regression,0.02,0.008,0.024,0.047,0.012,0.785
+5. Context only,7,Random Forest,0.012,0.003,0.012,0.004,0.011,0.012
+5. Context only,7,LightGBM,0.014,0.003,0.022,0.015,0.012,0.143
+6. Relative-to-file only,12,Logistic Regression,0.011,0.001,0.02,0.024,0.01,0.573
+6. Relative-to-file only,12,Random Forest,0.016,0.005,0.034,0.025,0.026,0.05
+6. Relative-to-file only,12,LightGBM,0.017,0.008,0.037,0.035,0.021,0.137
+"7. Method-level (2 + 6, no file size)",44,Logistic Regression,0.015,0.004,0.025,0.041,0.013,0.563
+"7. Method-level (2 + 6, no file size)",44,Random Forest,0.013,0.002,0.0,-0.0,0.0,0.0
+"7. Method-level (2 + 6, no file size)",44,LightGBM,0.014,0.003,0.022,0.011,0.014,0.046
