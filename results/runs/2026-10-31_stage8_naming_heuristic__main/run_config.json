@@ -1,0 +1,9 @@
+{
+  "run_id": "naming_heuristic__main",
+  "model": "naming_heuristic",
+  "feature_set": "main",
+  "transform": "none",
+  "model_params": {},
+  "role": "exploratory_heuristic",
+  "research_status": "exploratory_post_hoc"
+}

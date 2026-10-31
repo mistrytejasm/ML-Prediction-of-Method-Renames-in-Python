@@ -5,3 +5,6 @@
 *.xlsx  binary
 *.pptx  binary
 *.pdf   binary
+# Experiment outputs are stored and checked out byte-for-byte too, so their recorded SHA-256 values hold
+# on every machine (e.g. summary.md under core.autocrlf).
+results/runs/** -text

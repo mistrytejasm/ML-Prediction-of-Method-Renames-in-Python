@@ -1,0 +1,16 @@
+{
+  "run_id": "logistic_regression__main__log1p_asinh",
+  "model": "logistic_regression",
+  "feature_set": "main",
+  "transform": "log1p_asinh",
+  "model_params": {
+    "C": 1.0,
+    "l1_ratio": 0.0,
+    "solver": "lbfgs",
+    "max_iter": 5000,
+    "class_weight": "balanced",
+    "random_state": 42
+  },
+  "role": "confirmatory_model",
+  "research_status": "confirmatory"
+}

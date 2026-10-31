@@ -1,0 +1,126 @@
+{
+  "git": {
+    "commit": "669f07ed3c58e5678f963adb6a4cc0d98a748664",
+    "dirty": true,
+    "dirty_paths": [
+      "M docs/experiment_protocol.md",
+      "?? configs/runs/",
+      "?? docs/stage8_execution_guide.md",
+      "?? src/evaluation/cross_validate.py",
+      "?? src/evaluation/run_stage8.py",
+      "?? src/evaluation/run_store.py",
+      "?? tests/stage8_synthetic.py",
+      "?? tests/test_stage8.py"
+    ]
+  },
+  "python": "3.12.0",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "packages": {
+    "numpy": "2.5.4",
+    "pandas": "3.1.0",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1",
+    "lightgbm": "4.7.0"
+  },
+  "requirements_lock_sha256": "a493f8db091d2b3fdab92806a8fd51ba8cf86571102e8d0ce3d8d4d10379d7ea",
+  "master_dataset": "data/processed/master/actref_master_dataset.csv",
+  "master_sha256": "e6a8fd476feb87406846327093f9d8157a1238e7bd6f9fb7a50b60e659b8a8f0",
+  "split_hash": "16b4fac620af776ab3b018187b4a67e4c1be27f9d009a7acbab2ef6a8039f14c",
+  "split_csv_sha256": "00644a426bf1d835c76101dd3aab4fe6613228ecc0888fd8913881122df7f7d1",
+  "development_counts": {
+    "rows": 24967,
+    "projects": 261,
+    "positives": 193
+  },
+  "fold_statistics": [
+    {
+      "validation": {
+        "rows": 4999,
+        "projects": 50,
+        "positives": 41,
+        "negatives": 4958,
+        "positive_projects": 13
+      },
+      "training": {
+        "rows": 19968,
+        "projects": 211,
+        "positives": 152,
+        "negatives": 19816,
+        "positive_projects": 54
+      }
+    },
+    {
+      "validation": {
+        "rows": 4991,
+        "projects": 54,
+        "positives": 38,
+        "negatives": 4953,
+        "positive_projects": 13
+      },
+      "training": {
+        "rows": 19976,
+        "projects": 207,
+        "positives": 155,
+        "negatives": 19821,
+        "positive_projects": 54
+      }
+    },
+    {
+      "validation": {
+        "rows": 4991,
+        "projects": 53,
+        "positives": 38,
+        "negatives": 4953,
+        "positive_projects": 12
+      },
+      "training": {
+        "rows": 19976,
+        "projects": 208,
+        "positives": 155,
+        "negatives": 19821,
+        "positive_projects": 55
+      }
+    },
+    {
+      "validation": {
+        "rows": 4995,
+        "projects": 52,
+        "positives": 39,
+        "negatives": 4956,
+        "positive_projects": 13
+      },
+      "training": {
+        "rows": 19972,
+        "projects": 209,
+        "positives": 154,
+        "negatives": 19818,
+        "positive_projects": 54
+      }
+    },
+    {
+      "validation": {
+        "rows": 4991,
+        "projects": 52,
+        "positives": 37,
+        "negatives": 4954,
+        "positive_projects": 16
+      },
+      "training": {
+        "rows": 19976,
+        "projects": 209,
+        "positives": 156,
+        "negatives": 19820,
+        "positive_projects": 51
+      }
+    }
+  ],
+  "command": [
+    "src/evaluation/run_stage8.py"
+  ],
+  "started_utc": "2026-10-31T13:51:41.121800+00:00",
+  "config": "C:\\Users\\Amisha Mistry\\Downloads\\Refactoring_Project\\configs\\runs\\stage8_development_cv.json",
+  "config_sha256": "f57af623c7b890c4c74ad06270c23dbbeb6bddbad2d8927095a9046ae9687c6d",
+  "run_group": "stage8_development_cv",
+  "status": "complete",
+  "finished_utc": "2026-10-31T13:51:42.058864+00:00"
+}

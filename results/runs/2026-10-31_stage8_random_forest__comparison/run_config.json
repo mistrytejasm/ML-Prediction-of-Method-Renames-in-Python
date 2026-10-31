@@ -1,0 +1,16 @@
+{
+  "run_id": "random_forest__comparison",
+  "model": "random_forest",
+  "feature_set": "comparison",
+  "transform": "none",
+  "model_params": {
+    "n_estimators": 500,
+    "max_features": "sqrt",
+    "min_samples_leaf": 1,
+    "class_weight": "balanced",
+    "random_state": 42,
+    "n_jobs": -1
+  },
+  "role": "confirmatory_model",
+  "research_status": "confirmatory"
+}

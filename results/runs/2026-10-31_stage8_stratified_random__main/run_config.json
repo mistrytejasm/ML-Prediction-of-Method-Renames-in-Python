@@ -1,0 +1,11 @@
+{
+  "run_id": "stratified_random__main",
+  "model": "stratified_random",
+  "feature_set": "main",
+  "transform": "none",
+  "model_params": {
+    "random_state": 42
+  },
+  "role": "chance_reference",
+  "research_status": "reference"
+}

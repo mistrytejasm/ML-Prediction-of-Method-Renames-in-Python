@@ -1,0 +1,16 @@
+{
+  "run_id": "logistic_regression__main__yeo_johnson",
+  "model": "logistic_regression",
+  "feature_set": "main",
+  "transform": "yeo_johnson",
+  "model_params": {
+    "C": 1.0,
+    "l1_ratio": 0.0,
+    "solver": "lbfgs",
+    "max_iter": 5000,
+    "class_weight": "balanced",
+    "random_state": 42
+  },
+  "role": "confirmatory_model_transform_experiment",
+  "research_status": "confirmatory"
+}

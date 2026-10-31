@@ -1,0 +1,11 @@
+{
+  "run_id": "dummy_prior__main",
+  "model": "dummy_prior",
+  "feature_set": "main",
+  "transform": "none",
+  "model_params": {
+    "strategy": "prior"
+  },
+  "role": "chance_reference",
+  "research_status": "reference"
+}
