@@ -68,7 +68,7 @@ y, groups = df['renamed'], df['meta_project_group']
 | name_has_digit | name | int64 | Name contains a digit | any digit in name | yes | no | main + comparison |  |
 | name_short_tokens | name | int64 | Words of 1-2 letters that are not common abbreviations | len(token) <= 2 and token not in {id, io, ip, ok, db, os, ui, x, y, z, fn, nn, lr} | yes | no | main + comparison |  |
 | name_no_vowel_tokens | name | int64 | Words with no vowel (e.g. 'cnt') | len(token) > 1 and no a/e/i/o/u | yes | no | main + comparison |  |
-| name_starts_verb | name | int64 | First word is a common verb | first token in a fixed list of 72 verbs | yes | no | main + comparison |  |
+| name_starts_verb | name | int64 | First word is a common verb | first token in a fixed list of 68 verbs | yes | no | main + comparison |  |
 | name_single_char | name | int64 | Name is a single character | len(name.strip('_')) == 1 | yes | no | main + comparison | Very rare |
 | loc | code | int64 | Lines of code of the method | end_lineno - lineno + 1 | yes | no | main + comparison |  |
 | n_params | code | int64 | Number of parameters (self/cls excluded) | args + kw-only args | yes | no | main + comparison |  |

@@ -95,6 +95,13 @@ class FeatureSetTests(unittest.TestCase):
         self.assertIs(gen.COMPARISON_FEATURES, fs.COMPARISON_FEATURES)
         self.assertIs(gen.EXCLUDED_LEAKAGE, fs.EXCLUDED_LEAKAGE)
 
+    def test_dictionary_states_the_real_verb_count(self):
+        from src.features.method_features import VERBS
+        self.assertEqual(len(VERBS), 68)
+        text = (config.DOCS / "data_dictionary.md").read_text(encoding="utf-8")
+        self.assertIn(f"first token in a fixed list of {len(VERBS)} verbs", text)
+        self.assertNotIn("72 verbs", text)
+
     def test_experiment_configs_reference_approved_sets(self):
         configs = sorted(config.EXPERIMENT_CONFIGS.glob("*.json"))
         self.assertEqual([c.name for c in configs], ["comparison_42.json", "main_40.json"])
