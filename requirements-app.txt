@@ -1,0 +1,10 @@
+# Stage 10 local web application (src/app/, run.py): exact versions it was built and tested with.
+# Install on top of the research environment:
+#   pip install -r requirements-lock.txt -r requirements-app.txt
+# requirements-lock.txt (the research environment used for Stages 1-9) is deliberately unchanged.
+fastapi==0.162.0
+uvicorn==0.54.0
+python-multipart==0.0.33
+pydantic==2.14.2
+starlette==1.10.0
+httpx==0.28.1          # tests only (fastapi.testclient)
