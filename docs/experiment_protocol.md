@@ -92,10 +92,11 @@ X, y, groups = select_xy_groups(df, "main")            # 40 features; "compariso
 |---|---|
 | 1-6: dataset preparation, transform groups, saved split, preprocessing, model pipelines, metrics | Implemented and merged |
 | 7: `stratified_random` baseline, exploratory `naming_heuristic` | Implemented and merged |
-| 8: development cross-validation infrastructure (`src/evaluation/cross_validate.py`, `run_store.py`, `run_stage8.py`, `configs/runs/stage8_development_cv.json`) | Implemented; tested on synthetic data only |
-| 8: real-data dry run (`--dry-run`) | Not executed; needs approval |
-| 8: real-data development cross-validation (14-run matrix) | Not executed; needs approval |
+| 8: development cross-validation infrastructure (`src/evaluation/cross_validate.py`, `run_store.py`, `run_stage8.py`, `configs/runs/stage8_development_cv.json`) | Implemented and merged |
+| 8: real-data dry run (`--dry-run`) | Executed 2026-10-31; all checks passed |
+| 8: real-data development cross-validation (14-run matrix) | Executed once 2026-10-31, audited and frozen (`docs/stage8_results_freeze.md`) |
 | 8b: sensitivity runs; optional 20-seed random-baseline spread | Not executed |
-| 9: refit on development data, one held-out evaluation per feature set | Not started |
+| 9: refit on development data, one held-out evaluation per feature set | Executed once 2026-10-31 under `docs/stage9_final_evaluation_protocol.md`; against automatic labels no person has verified (`docs/stage9_final_evaluation_report.md`) |
+| Human label review of all 274 unconfirmed labels | Package prepared; not yet performed |
 
 How to run Stage 8 and read its outputs: `docs/stage8_execution_guide.md`.

@@ -1,0 +1,231 @@
+{
+  "git": {
+    "commit": "8052c6df6adc3b881d1e054f41c8765976f3cb9e",
+    "dirty": true,
+    "dirty_paths": [
+      "?? docs/stage9_final_evaluation_protocol.md",
+      "?? reports/label_review/",
+      "?? src/data/build_label_review_package.py",
+      "?? src/evaluation/run_stage9.py",
+      "?? tests/test_stage9.py"
+    ]
+  },
+  "python": "3.12.0",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "packages": {
+    "numpy": "2.5.4",
+    "pandas": "3.1.0",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1",
+    "lightgbm": "4.7.0"
+  },
+  "requirements_lock_sha256": "a493f8db091d2b3fdab92806a8fd51ba8cf86571102e8d0ce3d8d4d10379d7ea",
+  "master_dataset": "data/processed/master/actref_master_dataset.csv",
+  "master_sha256": "e6a8fd476feb87406846327093f9d8157a1238e7bd6f9fb7a50b60e659b8a8f0",
+  "split_hash": "16b4fac620af776ab3b018187b4a67e4c1be27f9d009a7acbab2ef6a8039f14c",
+  "split_csv_sha256": "00644a426bf1d835c76101dd3aab4fe6613228ecc0888fd8913881122df7f7d1",
+  "development_counts": {
+    "rows": 24967,
+    "projects": 261,
+    "positives": 193
+  },
+  "fold_statistics": [
+    {
+      "validation": {
+        "rows": 4999,
+        "projects": 50,
+        "positives": 41,
+        "negatives": 4958,
+        "positive_projects": 13
+      },
+      "training": {
+        "rows": 19968,
+        "projects": 211,
+        "positives": 152,
+        "negatives": 19816,
+        "positive_projects": 54
+      }
+    },
+    {
+      "validation": {
+        "rows": 4991,
+        "projects": 54,
+        "positives": 38,
+        "negatives": 4953,
+        "positive_projects": 13
+      },
+      "training": {
+        "rows": 19976,
+        "projects": 207,
+        "positives": 155,
+        "negatives": 19821,
+        "positive_projects": 54
+      }
+    },
+    {
+      "validation": {
+        "rows": 4991,
+        "projects": 53,
+        "positives": 38,
+        "negatives": 4953,
+        "positive_projects": 12
+      },
+      "training": {
+        "rows": 19976,
+        "projects": 208,
+        "positives": 155,
+        "negatives": 19821,
+        "positive_projects": 55
+      }
+    },
+    {
+      "validation": {
+        "rows": 4995,
+        "projects": 52,
+        "positives": 39,
+        "negatives": 4956,
+        "positive_projects": 13
+      },
+      "training": {
+        "rows": 19972,
+        "projects": 209,
+        "positives": 154,
+        "negatives": 19818,
+        "positive_projects": 54
+      }
+    },
+    {
+      "validation": {
+        "rows": 4991,
+        "projects": 52,
+        "positives": 37,
+        "negatives": 4954,
+        "positive_projects": 16
+      },
+      "training": {
+        "rows": 19976,
+        "projects": 209,
+        "positives": 156,
+        "negatives": 19820,
+        "positive_projects": 51
+      }
+    }
+  ],
+  "command": [
+    "src/evaluation/run_stage9.py"
+  ],
+  "started_utc": "2026-10-31T16:57:42.535504+00:00",
+  "finished_utc": "2026-10-31T16:57:57.754620+00:00",
+  "status": "complete",
+  "protocol_sha256": "3e3e8613778e8528e44be3f133d591268cab96a255db7bfb3f673997606bc419",
+  "stage8_selection": {
+    "main": {
+      "stage8_run": "2026-10-31_stage8_logistic_regression__main__yeo_johnson",
+      "selection_file": "stage9_selection.json",
+      "selection_file_sha256": "a4bca8934aeadb17cfbd53fd40d260b24c88c134ba9047817ecd1abfc2a079b3",
+      "run_config_sha256": "3822f6f2e0e5bb6d80a9e98357a812e6e09717d81ca166343d8a4c21f32a4d43",
+      "summary_sha256": "1d11ac4fc3e6c4e589ec285615bf022cbc50aad99409cdf45074e8539af625c7",
+      "oof_sha256": "54b9020970b88b2dbe7855ec83ce6a2c54c2fea55a44352bf7f0038c89ca406b",
+      "threshold_recomputed_from_oof": 0.859356439967941,
+      "threshold_n_tied": 1
+    },
+    "comparison": {
+      "stage8_run": "2026-10-31_stage8_logistic_regression__comparison__yeo_johnson",
+      "selection_file": "stage9_selection.json",
+      "selection_file_sha256": "a4bca8934aeadb17cfbd53fd40d260b24c88c134ba9047817ecd1abfc2a079b3",
+      "run_config_sha256": "704976d3e5903e016610c5f02e987540eec80f1b2393f1355f6d390d9b1491e8",
+      "summary_sha256": "d151fa51d4cd3555e05466c11baa49da2fb48950a1617d89b972fb7efba06ffd",
+      "oof_sha256": "3456964cbd3d8046723203182684aca45ff2ef545027c03ed75f3b22cc31d42f",
+      "threshold_recomputed_from_oof": 0.8459416092065658,
+      "threshold_n_tied": 1
+    }
+  },
+  "partition_counts": {
+    "development": {
+      "rows": 24967,
+      "projects": 261,
+      "positives": 193
+    },
+    "test": {
+      "rows": 6242,
+      "projects": 62,
+      "positives": 50,
+      "positive_projects": 12
+    }
+  },
+  "source_files": [
+    {
+      "path": "src/evaluation/run_stage9.py",
+      "sha256": "fc17175db68c4ce2a686758704a70e0ee17efa88ec098f7a64d6c74706254eac",
+      "sha256_lf_normalized": "fc17175db68c4ce2a686758704a70e0ee17efa88ec098f7a64d6c74706254eac"
+    },
+    {
+      "path": "src/evaluation/cross_validate.py",
+      "sha256": "c3aa3393fedb63c412330b9c5089cd69dd232c488baf2a18df452b8806b3a3fb",
+      "sha256_lf_normalized": "c3aa3393fedb63c412330b9c5089cd69dd232c488baf2a18df452b8806b3a3fb"
+    },
+    {
+      "path": "src/evaluation/metrics.py",
+      "sha256": "57c0078aed93d60523bd61bcc34fba580e4c7bd4e5fa55b499fb2f8b8d7d523e",
+      "sha256_lf_normalized": "57c0078aed93d60523bd61bcc34fba580e4c7bd4e5fa55b499fb2f8b8d7d523e"
+    },
+    {
+      "path": "src/evaluation/splits.py",
+      "sha256": "30a93e59e5f8d11616d7075072f21581c75932593f7dd51fa3a1f419a44f2448",
+      "sha256_lf_normalized": "30a93e59e5f8d11616d7075072f21581c75932593f7dd51fa3a1f419a44f2448"
+    },
+    {
+      "path": "src/evaluation/run_store.py",
+      "sha256": "66070c9e3b0f79d7016359840d1adf1196c49b9dbdd2a407a19fdd108a77b186",
+      "sha256_lf_normalized": "66070c9e3b0f79d7016359840d1adf1196c49b9dbdd2a407a19fdd108a77b186"
+    },
+    {
+      "path": "src/models/pipelines.py",
+      "sha256": "486c53bf88842dd93660ad89f58649fb7795d7f01736bf06bbe8174522ffc973",
+      "sha256_lf_normalized": "fc82342740dfa2fb4aab1115c11d68d9d23224381c0890e25cc385f9d9c7adbb"
+    },
+    {
+      "path": "src/models/baselines.py",
+      "sha256": "79b100ee1def9e50d7275eb64dc99d6d97c02f06d9e266c2c1c775d546d4c1a9",
+      "sha256_lf_normalized": "c9acd81dd1f418477946a74915fa2d2002922206b99f39dfbb68ae3dbb1a09ef"
+    },
+    {
+      "path": "src/preprocessing/transforms.py",
+      "sha256": "36a7362f3e05e7cd38d7623760d42547fa14951c651de2ff64b16784157ac63f",
+      "sha256_lf_normalized": "36a7362f3e05e7cd38d7623760d42547fa14951c651de2ff64b16784157ac63f"
+    },
+    {
+      "path": "src/features/transform_groups.py",
+      "sha256": "95b80df5e64d8cfb85fb0a66df134565988b665001e8766ef472b3e93440388a",
+      "sha256_lf_normalized": "95b80df5e64d8cfb85fb0a66df134565988b665001e8766ef472b3e93440388a"
+    },
+    {
+      "path": "src/features/feature_sets.py",
+      "sha256": "5a79aeda2c2f1d4b99fe2a90f33d4c2780abb97c6f8a447f1ee90a078694507c",
+      "sha256_lf_normalized": "33009625578c996e5893fae61c2ea1b2a8c4c2eae04cf061ab654f8e6b7d9812"
+    },
+    {
+      "path": "src/data/prepare_dataset.py",
+      "sha256": "6bea9bde275e6fdb3b5869976612f3ac01f48ca60644dd034d63724b0f1a50d2",
+      "sha256_lf_normalized": "6bea9bde275e6fdb3b5869976612f3ac01f48ca60644dd034d63724b0f1a50d2"
+    },
+    {
+      "path": "src/data/load_master.py",
+      "sha256": "2270df2fba3c7870ed048f1127437d3f15ee946260e80ee2c64e0a628f7f8609",
+      "sha256_lf_normalized": "6c7ec91afd122d175af2e00acfd97d8cf17f48d0f195cc86f5b24f710913e1eb"
+    },
+    {
+      "path": "src/config.py",
+      "sha256": "7f57d0ae6c97de02729d2c5d2e18b8a03717c78feecb87c253aeab9dbd123ca9",
+      "sha256_lf_normalized": "5be7ab67a9ddda821917372f37ed78c476869f2bcbe0b25e6b93e3fd75492601"
+    }
+  ],
+  "model_artifacts": {
+    "path": "results/models/2026-10-31_stage9_final_test",
+    "sha256": {
+      "comparison_pipeline.joblib": "9f415c196d568e8425fbf8f59e7cc95cc2b1f0f551103d5645629e8dffdf7e0e",
+      "main_pipeline.joblib": "595e7d58ab2740f2aa3765360a8bed0c54ea64a8c313ef382c37b3d173156a5f",
+      "model_metadata.json": "ca6f3d4e9651225eaf8252b78799a77e6d4f99b7da808920bdaa1d0d22ecb6d8"
+    }
+  }
+}

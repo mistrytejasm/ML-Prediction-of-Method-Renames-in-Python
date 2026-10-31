@@ -1,0 +1,93 @@
+{
+  "stage": 9,
+  "protocol": "docs/stage9_final_evaluation_protocol.md",
+  "feature_sets": {
+    "primary": "main",
+    "secondary": "comparison"
+  },
+  "selected": {
+    "main": {
+      "run_id": "logistic_regression__main__yeo_johnson",
+      "spec": {
+        "run_id": "logistic_regression__main__yeo_johnson",
+        "model": "logistic_regression",
+        "feature_set": "main",
+        "transform": "yeo_johnson",
+        "model_params": {
+          "C": 1.0,
+          "l1_ratio": 0.0,
+          "solver": "lbfgs",
+          "max_iter": 5000,
+          "class_weight": "balanced",
+          "random_state": 42
+        },
+        "role": "confirmatory_model_transform_experiment",
+        "research_status": "confirmatory"
+      },
+      "threshold": 0.859356439967941,
+      "threshold_source": "Stage 8 max F1 on pooled development OOF scores (summary.json), re-verified from oof_predictions.csv",
+      "dev_cv_ap_mean": 0.013270931619669768,
+      "dev_cv_ap_std": 0.0034514713200503367,
+      "dev_cv_ap_per_fold": [
+        0.0173167744658412,
+        0.011815657351590163,
+        0.01662973834793223,
+        0.010600245327935817,
+        0.009992242605049434
+      ],
+      "dev_roc_auc_fold_mean": 0.6313069794097055,
+      "dev_oof_threshold_metrics": {
+        "precision": 0.020637898686679174,
+        "recall": 0.05699481865284974,
+        "f1": 0.030303030303030304,
+        "mcc": 0.02176730429524299
+      },
+      "dev_oof_threshold_metrics_note": "optimistic: measured on the same pooled development OOF scores that were used to select the threshold; not a performance estimate"
+    },
+    "comparison": {
+      "run_id": "logistic_regression__comparison__yeo_johnson",
+      "spec": {
+        "run_id": "logistic_regression__comparison__yeo_johnson",
+        "model": "logistic_regression",
+        "feature_set": "comparison",
+        "transform": "yeo_johnson",
+        "model_params": {
+          "C": 1.0,
+          "l1_ratio": 0.0,
+          "solver": "lbfgs",
+          "max_iter": 5000,
+          "class_weight": "balanced",
+          "random_state": 42
+        },
+        "role": "confirmatory_model_transform_experiment",
+        "research_status": "confirmatory"
+      },
+      "threshold": 0.8459416092065658,
+      "threshold_source": "Stage 8 max F1 on pooled development OOF scores (summary.json), re-verified from oof_predictions.csv",
+      "dev_cv_ap_mean": 0.01912601284843813,
+      "dev_cv_ap_std": 0.008936818462774799,
+      "dev_cv_ap_per_fold": [
+        0.021349277502258564,
+        0.018852430688512705,
+        0.03269676556935805,
+        0.009147478313016981,
+        0.01358411216904434
+      ],
+      "dev_roc_auc_fold_mean": 0.6813721242055217,
+      "dev_oof_threshold_metrics": {
+        "precision": 0.02536997885835095,
+        "recall": 0.12435233160621761,
+        "f1": 0.04214223002633889,
+        "mcc": 0.03996986742337616
+      },
+      "dev_oof_threshold_metrics_note": "optimistic: measured on the same pooled development OOF scores that were used to select the threshold; not a performance estimate"
+    }
+  },
+  "bootstrap": {
+    "n_boot": 2000,
+    "seed": 42,
+    "method": "stratified project percentile",
+    "confidence": 0.95
+  },
+  "label_limitation": "positive labels were constructed automatically (167 rule-accepted, 76 AI-reviewed); none is human-verified"
+}
