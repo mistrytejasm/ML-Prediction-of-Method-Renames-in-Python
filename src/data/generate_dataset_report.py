@@ -27,6 +27,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from src import config  # noqa: E402
 from src.features.feature_sets import (COMPARISON_FEATURES, COMPARISON_ONLY, DROPPED_FEATURES,  # noqa: E402
                                        EXCLUDED_LEAKAGE, MAIN_FEATURES, check_configurations)
+from src.features.method_features import VERBS  # noqa: E402
 
 log = logging.getLogger("generate_dataset_report")
 
@@ -41,7 +42,7 @@ FEATURE_INFO = {
     "name_short_tokens": ("Words of 1-2 letters that are not common abbreviations",
                           "len(token) <= 2 and token not in {id, io, ip, ok, db, os, ui, x, y, z, fn, nn, lr}", ""),
     "name_no_vowel_tokens": ("Words with no vowel (e.g. 'cnt')", "len(token) > 1 and no a/e/i/o/u", ""),
-    "name_starts_verb": ("First word is a common verb", "first token in a fixed list of 72 verbs", ""),
+    "name_starts_verb": ("First word is a common verb", f"first token in a fixed list of {len(VERBS)} verbs", ""),
     "name_single_char": ("Name is a single character", "len(name.strip('_')) == 1", "Very rare"),
     "loc": ("Lines of code of the method", "end_lineno - lineno + 1", ""),
     "n_params": ("Number of parameters (self/cls excluded)", "args + kw-only args", ""),

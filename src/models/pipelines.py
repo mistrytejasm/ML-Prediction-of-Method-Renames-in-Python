@@ -9,6 +9,8 @@ pipelines only; nothing here trains on the master dataset.
   random_forest         "none"                                     check -> model   (raw features)
   lightgbm              "none"                                     check -> model   (raw features)
   dummy_prior           "none"                                     check -> model   (raw features, ignored)
+  stratified_random     "none"                                     check -> model   (Stage 7 baseline)
+  naming_heuristic      "none"                                     check -> model   (Stage 7 baseline)
 
 Every pipeline starts with the Stage 4 input check (FeatureFrameCheck); the
 Logistic Regression steps are the Stage 4 preprocessing pipeline itself.
@@ -25,6 +27,10 @@ Baseline settings (explicit, not tuned; documented in BASE_PARAMS):
                        scale_pos_weight = negatives / positives of each fit's labels
   dummy_prior          DummyClassifier(strategy="prior"): predicts the training
                        positive rate for every row (the class-imbalance reference)
+  stratified_random    StratifiedRandomClassifier(random_state=42): random ranking
+                       with mean score = training positive rate (src/models/baselines.py)
+  naming_heuristic     NamingHeuristicClassifier(): exploratory, post-hoc share of six
+                       name flags; no training, no parameters (src/models/baselines.py)
 
 model_params (dict) overrides baseline hyperparameters. Unknown parameters and the
 parameters that define the approved design (LOCKED_PARAMS: class weighting, the
@@ -45,6 +51,7 @@ from sklearn.utils.validation import check_is_fitted
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from src.features.feature_sets import get_feature_set  # noqa: E402
+from src.models.baselines import NamingHeuristicClassifier, StratifiedRandomClassifier  # noqa: E402
 from src.preprocessing.transforms import LR_TRANSFORMS, FeatureFrameCheck, build_lr_preprocessing_pipeline  # noqa: E402
 
 
@@ -118,6 +125,8 @@ MODELS = {
     "random_forest": RandomForestClassifier,
     "lightgbm": FoldWeightedLGBM,
     "dummy_prior": DummyClassifier,
+    "stratified_random": StratifiedRandomClassifier,
+    "naming_heuristic": NamingHeuristicClassifier,
 }
 BASE_PARAMS = {
     "logistic_regression": {"C": 1.0, "l1_ratio": 0.0, "solver": "lbfgs", "max_iter": 5000,
@@ -127,21 +136,28 @@ BASE_PARAMS = {
     "lightgbm": {"n_estimators": 300, "learning_rate": 0.05, "num_leaves": 31, "min_child_samples": 20,
                  "random_state": 42, "n_jobs": 1, "deterministic": True},
     "dummy_prior": {"strategy": "prior"},
+    "stratified_random": {"random_state": 42},
+    "naming_heuristic": {},
 }
 LOCKED_PARAMS = {
     "logistic_regression": {"class_weight", "l1_ratio", "penalty"},
     "random_forest": {"class_weight"},
     "lightgbm": set(FoldWeightedLGBM.MANAGED),
     "dummy_prior": {"strategy"},
+    "stratified_random": set(),
+    "naming_heuristic": set(),
 }
 TRANSFORMS = {
     "logistic_regression": tuple(LR_TRANSFORMS),           # ("log1p_asinh", "yeo_johnson")
     "random_forest": ("none",),
     "lightgbm": ("none",),
     "dummy_prior": ("none",),
+    "stratified_random": ("none",),
+    "naming_heuristic": ("none",),
 }
 DEFAULT_TRANSFORM = {"logistic_regression": "log1p_asinh", "random_forest": "none",
-                     "lightgbm": "none", "dummy_prior": "none"}
+                     "lightgbm": "none", "dummy_prior": "none", "stratified_random": "none",
+                     "naming_heuristic": "none"}
 
 
 def resolve_model_params(model_name, overrides=None):
