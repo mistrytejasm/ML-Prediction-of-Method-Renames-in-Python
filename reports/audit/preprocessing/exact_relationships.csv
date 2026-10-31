@@ -1,0 +1,4 @@
+binary_feature,equals,agreement,disagreeing_rows
+has_docstring,doc_len > 0,1.0,0
+in_class,class_depth > 0,1.0,0
+in_class,class_n_methods > 0,1.0,0
