@@ -1,0 +1,7 @@
+# Data files are stored and checked out byte-for-byte (no line-ending conversion),
+# so dataset contents never change between machines.
+*.csv   -text
+*.json  -text
+*.xlsx  binary
+*.pptx  binary
+*.pdf   binary

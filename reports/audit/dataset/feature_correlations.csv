@@ -1,0 +1,10 @@
+feature_a,feature_b,pearson_r
+in_class,class_depth,0.997
+file_n_methods,file_loc,0.879
+cyclomatic,rel_cyclomatic,0.859
+name_token_sharing,first_token_shared,0.849
+name_len,name_tokens,0.848
+name_body_overlap,rel_name_body_overlap,0.848
+rel_name_len,rel_name_tokens,0.828
+rel_loc,rel_n_calls,0.812
+loc,n_calls,0.807
