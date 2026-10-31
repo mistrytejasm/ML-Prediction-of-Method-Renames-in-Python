@@ -2,6 +2,13 @@
 
 Project: **ML Prediction of Method Renames in Python** · Branch `feature/actref-data-audit-and-master-dataset` · 2026-10-31
 
+> **Note (added 2026-10-31, after this report):** the feature recommendations in section D ("Recommended features for
+> future experiments": keep all 46 for the first baselines) are **superseded**. A later temporal leakage audit
+> excluded `call_sites` and `rel_call_sites`, and the approved training configurations are now 40 features (main)
+> and 42 (comparison), defined in `src/features/feature_sets.py`. See `docs/feature_dataset_mapping.md` and
+> `docs/temporal_leakage_audit.md`. The rest of this report is kept unchanged as the historical record of the
+> dataset audit; the 46-feature master dataset it describes is still the canonical source.
+
 **Result:** one validated master dataset, `data/processed/master/actref_master_dataset.csv`,
 with 31,209 methods, 243 positives (0.78%), 46 Before-only features and 323 project groups.
 Every number below was produced by the scripts in `src/data/` and can be regenerated.

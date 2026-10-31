@@ -22,6 +22,11 @@ V1_FEATURES = ROOT / "archive" / "old_datasets" / "method_features_v1_rename_fil
 MASTER_DIR = DATA / "processed" / "master"
 MASTER = MASTER_DIR / "actref_master_dataset.csv"
 MASTER_SCHEMA = MASTER_DIR / "actref_master_dataset_schema.json"
+# SHA-256 of the canonical, audited master dataset (also stored in its schema).
+MASTER_SHA256 = "e6a8fd476feb87406846327093f9d8157a1238e7bd6f9fb7a50b60e659b8a8f0"
+SPLITS_DIR = DATA / "processed" / "splits"
+EXPERIMENT_CONFIGS = ROOT / "configs" / "experiments"
+RUNS_DIR = ROOT / "results" / "runs"
 
 REPORTS_AUDIT = ROOT / "reports" / "audit"
 REGENERATED_FEATURES = REPORTS_AUDIT / "regenerated" / "method_features_v2_regenerated.csv"
