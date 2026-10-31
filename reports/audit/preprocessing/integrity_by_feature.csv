@@ -1,0 +1,47 @@
+feature,set,type,dtype,missing,non_numeric,infinite,unique,min,max,top_value,top_value_share,constant,near_constant_99pct,values_as_expected
+name_len,main + comparison,count,int64,0,0,0,61,1.0,91.0,7.0,0.063315,False,False,True
+name_tokens,main + comparison,count,int64,0,0,0,16,1.0,21.0,2.0,0.375084,False,False,True
+name_is_private,main + comparison,binary,int64,0,0,0,2,0.0,1.0,0.0,0.815822,False,False,True
+name_is_camel,main + comparison,binary,int64,0,0,0,2,0.0,1.0,0.0,0.97081,False,False,True
+name_has_digit,main + comparison,binary,int64,0,0,0,2,0.0,1.0,0.0,0.966196,False,False,True
+name_short_tokens,main + comparison,count,int64,0,0,0,7,0.0,6.0,0.0,0.869877,False,False,True
+name_no_vowel_tokens,main + comparison,count,int64,0,0,0,5,0.0,4.0,0.0,0.927809,False,False,True
+name_starts_verb,main + comparison,binary,int64,0,0,0,2,0.0,1.0,0.0,0.533628,False,False,True
+name_single_char,main + comparison,binary,int64,0,0,0,2,0.0,1.0,0.0,0.996507,False,True,True
+loc,main + comparison,count,int64,0,0,0,261,1.0,567.0,2.0,0.178923,False,False,True
+n_params,main + comparison,count,int64,0,0,0,36,0.0,91.0,1.0,0.314589,False,False,True
+n_defaults,main + comparison,count,int64,0,0,0,30,0.0,89.0,0.0,0.773975,False,False,True
+has_varargs,main + comparison,binary,int64,0,0,0,2,0.0,1.0,0.0,0.985165,False,False,True
+has_kwargs,main + comparison,binary,int64,0,0,0,2,0.0,1.0,0.0,0.943093,False,False,True
+n_returns,main + comparison,count,int64,0,0,0,17,0.0,21.0,1.0,0.645423,False,False,True
+n_calls,main + comparison,count,int64,0,0,0,119,0.0,255.0,1.0,0.198949,False,False,True
+cyclomatic,main + comparison,count,int64,0,0,0,56,1.0,72.0,1.0,0.497549,False,False,True
+max_nesting,main + comparison,count,int64,0,0,0,18,0.0,24.0,0.0,0.545163,False,False,True
+has_docstring,main + comparison,binary,int64,0,0,0,2,0.0,1.0,0.0,0.617226,False,False,True
+doc_len,main + comparison,count,int64,0,0,0,1438,0.0,10833.0,0.0,0.617226,False,False,True
+is_stub,main + comparison,binary,int64,0,0,0,2,0.0,1.0,0.0,0.960716,False,False,True
+is_async,dropped,binary,int64,0,0,0,2,0.0,1.0,0.0,0.998814,False,True,True
+n_decorators,main + comparison,count,int64,0,0,0,15,0.0,16.0,0.0,0.816239,False,False,True
+is_property,main + comparison,binary,int64,0,0,0,2,0.0,1.0,0.0,0.927585,False,False,True
+is_static_or_class,main + comparison,binary,int64,0,0,0,2,0.0,1.0,0.0,0.952033,False,False,True
+name_body_overlap,main + comparison,"ratio [0,1]",float64,0,0,0,36,0.0,1.0,0.0,0.342465,False,False,True
+in_class,main + comparison,binary,int64,0,0,0,2,0.0,1.0,1.0,0.702201,False,False,True
+class_depth,dropped,count,int64,0,0,0,4,0.0,3.0,1.0,0.70092,False,False,True
+class_n_methods,main + comparison,count,int64,0,0,0,79,0.0,267.0,0.0,0.297799,False,False,True
+file_n_methods,comparison only,count,int64,0,0,0,125,1.0,489.0,11.0,0.032138,False,False,True
+file_loc,comparison only,count,int64,0,0,0,836,7.0,6999.0,3052.0,0.008651,False,False,True
+is_test_file,main + comparison,binary,int64,0,0,0,2,0.0,1.0,0.0,0.892819,False,False,True
+style_mismatch,main + comparison,binary,int64,0,0,0,2,0.0,1.0,0.0,0.986606,False,False,True
+call_sites,excluded (leakage),count,int64,0,0,0,96,0.0,617.0,1.0,0.237656,False,False,True
+name_token_sharing,main + comparison,"ratio [0,1]",float64,0,0,0,37,0.0,1.0,1.0,0.435964,False,False,True
+first_token_shared,main + comparison,binary,int64,0,0,0,2,0.0,1.0,1.0,0.623218,False,False,True
+style_share_in_file,main + comparison,"ratio [0,1]",float64,0,0,0,491,0.004,1.0,1.0,0.08693,False,False,True
+rel_name_len,main + comparison,signed relative,float64,0,0,0,5413,-25.0,61.8,0.0,0.029543,False,False,True
+rel_name_tokens,main + comparison,signed relative,float64,0,0,0,1393,-5.4,15.325,0.0,0.075555,False,False,True
+rel_loc,main + comparison,signed relative,float64,0,0,0,8720,-239.5,397.143,0.0,0.027524,False,False,True
+rel_n_params,main + comparison,signed relative,float64,0,0,0,2020,-20.0,77.056,0.0,0.06841,False,False,True
+rel_n_calls,main + comparison,signed relative,float64,0,0,0,5249,-73.5,181.296,0.0,0.032779,False,False,True
+rel_cyclomatic,main + comparison,signed relative,float64,0,0,0,2915,-21.667,65.543,0.0,0.063059,False,False,True
+rel_doc_len,main + comparison,signed relative,float64,0,0,0,9906,-3174.667,9697.267,0.0,0.26031,False,False,True
+rel_call_sites,excluded (leakage),signed relative,float64,0,0,0,3868,-121.333,536.25,0.0,0.052004,False,False,True
+rel_name_body_overlap,main + comparison,signed relative,float64,0,0,0,1435,-0.941,0.938,0.0,0.061489,False,False,True

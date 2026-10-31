@@ -6,7 +6,7 @@
   "dataset": "data/processed/master/actref_master_dataset.csv",
   "target": "renamed",
   "group_column": "meta_project_group",
-  "primary_metric": "pr_auc",
+  "primary_metric": "average_precision",
   "secondary_metrics": ["precision", "recall", "f1", "mcc", "roc_auc"],
   "status": "defined; not run yet"
 }

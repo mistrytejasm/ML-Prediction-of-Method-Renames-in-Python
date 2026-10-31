@@ -1,0 +1,26 @@
+{
+  "generated": "2026-10-31",
+  "master_sha256_before": "e6a8fd476feb87406846327093f9d8157a1238e7bd6f9fb7a50b60e659b8a8f0",
+  "rows": 31209,
+  "positives": 243,
+  "negatives": 30966,
+  "features": 46,
+  "main": 40,
+  "comparison": 42,
+  "project_groups": 323,
+  "duplicates": {
+    "duplicate_keys": 0,
+    "duplicate_full_rows": 0,
+    "rows_sharing_identical_42_feature_vector": 3336,
+    "identical_vector_clusters": 1408,
+    "conflicting_clusters_same_name": 1,
+    "clusters_with_conflicting_labels": 9,
+    "rows_in_conflicting_clusters": 27,
+    "rows_same_name_and_vector": 1964,
+    "same_name_clusters_spanning_groups": 0,
+    "commit_ids_valid": true,
+    "empty_class_rows (module functions)": 9294
+  },
+  "bootstrap_reps_used": 500,
+  "master_sha256_after": "e6a8fd476feb87406846327093f9d8157a1238e7bd6f9fb7a50b60e659b8a8f0"
+}

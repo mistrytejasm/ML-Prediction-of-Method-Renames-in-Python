@@ -1,0 +1,23 @@
+feature_a,feature_b,pearson,spearman,types
+has_docstring,doc_len,0.4157657909451752,0.9626404824096612,binary / count
+cyclomatic,max_nesting,0.7486580652781454,0.9194012589948547,count / count
+name_body_overlap,rel_name_body_overlap,0.8477838394824576,0.8668788479596377,"ratio [0,1] / signed relative"
+file_n_methods,file_loc,0.8794567712885102,0.8563811368826231,count / count
+name_len,name_tokens,0.848271970315721,0.8535813521407933,count / count
+name_token_sharing,first_token_shared,0.8494910548226461,0.8355520031405076,"ratio [0,1] / binary"
+rel_name_len,rel_name_tokens,0.8278348021558593,0.8141784802947627,signed relative / signed relative
+in_class,class_n_methods,0.29712768224386066,0.8029853990486558,binary / count
+rel_loc,rel_n_calls,0.8121953954453743,0.7795415099530132,signed relative / signed relative
+name_tokens,rel_name_tokens,0.7820517443550615,0.7618017542859548,count / signed relative
+name_len,rel_name_len,0.7901300828770855,0.7584913045438347,count / signed relative
+loc,n_calls,0.8069720810339384,0.7440908730731811,count / count
+rel_loc,rel_cyclomatic,0.7471634957260143,0.7077320533578302,signed relative / signed relative
+rel_n_calls,rel_cyclomatic,0.7395631405544602,0.6965787319217395,signed relative / signed relative
+n_calls,cyclomatic,0.7330510401040332,0.68163159809617,count / count
+loc,cyclomatic,0.7293385794544875,0.6770396467667312,count / count
+n_params,rel_n_params,0.7517634226511306,0.6691339975126058,count / signed relative
+n_calls,rel_n_calls,0.7983890643054714,0.655385873044695,count / signed relative
+cyclomatic,rel_cyclomatic,0.8590025532711544,0.6529632009824627,count / signed relative
+loc,rel_loc,0.7838304571020248,0.5881481488126331,count / signed relative
+n_params,n_defaults,0.7491943831150222,0.5583477494441785,count / count
+doc_len,rel_doc_len,0.7333580466944464,0.35165582107484633,count / signed relative
