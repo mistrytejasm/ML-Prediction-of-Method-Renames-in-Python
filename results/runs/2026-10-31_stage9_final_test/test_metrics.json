@@ -1,0 +1,1336 @@
+{
+  "main": {
+    "test": {
+      "average_precision": 0.01602282894610989,
+      "roc_auc": 0.6899967700258398,
+      "precision": 0.0125,
+      "recall": 0.02,
+      "f1": 0.015384615384615385,
+      "mcc": 0.005738908384620313,
+      "tp": 1,
+      "fp": 79,
+      "fn": 49,
+      "tn": 6113,
+      "n": 6242,
+      "n_positive": 50,
+      "prevalence": 0.008010253123998718,
+      "random_ap_baseline": 0.008010253123998718,
+      "ap_lift_over_random": 2.000289965632359,
+      "n_predicted_positive": 80,
+      "share_predicted_positive": 0.01281640499839795,
+      "threshold": 0.859356439967941,
+      "fit_seconds": 0.786,
+      "predict_seconds": 0.011
+    },
+    "development": {
+      "dev_cv_ap_mean": 0.013270931619669768,
+      "dev_cv_ap_std": 0.0034514713200503367,
+      "dev_cv_ap_per_fold": [
+        0.0173167744658412,
+        0.011815657351590163,
+        0.01662973834793223,
+        0.010600245327935817,
+        0.009992242605049434
+      ],
+      "dev_roc_auc_fold_mean": 0.6313069794097055,
+      "dev_oof_threshold_metrics": {
+        "precision": 0.020637898686679174,
+        "recall": 0.05699481865284974,
+        "f1": 0.030303030303030304,
+        "mcc": 0.02176730429524299
+      },
+      "dev_oof_threshold_metrics_note": "optimistic: measured on the same pooled development OOF scores that were used to select the threshold; not a performance estimate"
+    },
+    "test_ap_minus_dev_cv_ap": 0.002751897326440123,
+    "warnings": [],
+    "per_project": [
+      {
+        "meta_project_group": "architectures",
+        "rows": 19,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 19,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "auto_ml",
+        "rows": 47,
+        "positives": 0,
+        "TP": 0,
+        "FP": 2,
+        "FN": 0,
+        "TN": 45,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "base.py",
+        "rows": 28,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 28,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "batchflow",
+        "rows": 144,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 144,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "bert",
+        "rows": 17,
+        "positives": 1,
+        "TP": 0,
+        "FP": 0,
+        "FN": 1,
+        "TN": 16,
+        "best_positive_rank": 1416.0
+      },
+      {
+        "meta_project_group": "bindsnet",
+        "rows": 3,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 3,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "brats",
+        "rows": 14,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 14,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "cameras.py",
+        "rows": 5,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 5,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "deeppavlov",
+        "rows": 99,
+        "positives": 2,
+        "TP": 1,
+        "FP": 1,
+        "FN": 1,
+        "TN": 96,
+        "best_positive_rank": 64.0
+      },
+      {
+        "meta_project_group": "extract_subimgs_single.py",
+        "rows": 2,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 2,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "fairseq",
+        "rows": 45,
+        "positives": 1,
+        "TP": 0,
+        "FP": 1,
+        "FN": 1,
+        "TN": 43,
+        "best_positive_rank": 1476.0
+      },
+      {
+        "meta_project_group": "fer",
+        "rows": 8,
+        "positives": 5,
+        "TP": 0,
+        "FP": 0,
+        "FN": 5,
+        "TN": 3,
+        "best_positive_rank": 195.0
+      },
+      {
+        "meta_project_group": "frcnn",
+        "rows": 78,
+        "positives": 0,
+        "TP": 0,
+        "FP": 1,
+        "FN": 0,
+        "TN": 77,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "frontend",
+        "rows": 3,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 3,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "garage",
+        "rows": 131,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 131,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "gluonnlp",
+        "rows": 116,
+        "positives": 2,
+        "TP": 0,
+        "FP": 0,
+        "FN": 2,
+        "TN": 114,
+        "best_positive_rank": 1275.0
+      },
+      {
+        "meta_project_group": "imagekit",
+        "rows": 227,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 227,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "images",
+        "rows": 1,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 1,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "integration_test",
+        "rows": 1,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 1,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "jaxnerf",
+        "rows": 27,
+        "positives": 1,
+        "TP": 0,
+        "FP": 0,
+        "FN": 1,
+        "TN": 26,
+        "best_positive_rank": 5383.0
+      },
+      {
+        "meta_project_group": "keract",
+        "rows": 4,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 4,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "keras",
+        "rows": 2711,
+        "positives": 0,
+        "TP": 0,
+        "FP": 42,
+        "FN": 0,
+        "TN": 2669,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "keras_ssd_loss.py",
+        "rows": 3,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 3,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "kfac.py",
+        "rows": 16,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 16,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "labm8",
+        "rows": 6,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 6,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "language_model.py",
+        "rows": 5,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 5,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "liegroups",
+        "rows": 9,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 9,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "mahotas",
+        "rows": 25,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 25,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "mimic3models",
+        "rows": 6,
+        "positives": 0,
+        "TP": 0,
+        "FP": 1,
+        "FN": 0,
+        "TN": 5,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "mmdnn",
+        "rows": 13,
+        "positives": 0,
+        "TP": 0,
+        "FP": 2,
+        "FN": 0,
+        "TN": 11,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "mozregression",
+        "rows": 17,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 17,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "open_seq2seq",
+        "rows": 22,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 22,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "opennmt",
+        "rows": 164,
+        "positives": 0,
+        "TP": 0,
+        "FP": 1,
+        "FN": 0,
+        "TN": 163,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "optuna",
+        "rows": 36,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 36,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "orange",
+        "rows": 50,
+        "positives": 0,
+        "TP": 0,
+        "FP": 2,
+        "FN": 0,
+        "TN": 48,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "palladium",
+        "rows": 7,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 7,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "pliers",
+        "rows": 32,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 32,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "pro_gan_pytorch",
+        "rows": 84,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 84,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "pymc3",
+        "rows": 43,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 43,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "pyntcloud",
+        "rows": 9,
+        "positives": 0,
+        "TP": 0,
+        "FP": 1,
+        "FN": 0,
+        "TN": 8,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "pytorch_lightning_simple.py",
+        "rows": 6,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 6,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "qiskit",
+        "rows": 29,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 29,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "rastervision",
+        "rows": 102,
+        "positives": 0,
+        "TP": 0,
+        "FP": 1,
+        "FN": 0,
+        "TN": 101,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "rl_coach",
+        "rows": 206,
+        "positives": 0,
+        "TP": 0,
+        "FP": 6,
+        "FN": 0,
+        "TN": 200,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "run_tgen.py",
+        "rows": 4,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 4,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "service",
+        "rows": 9,
+        "positives": 1,
+        "TP": 0,
+        "FP": 0,
+        "FN": 1,
+        "TN": 8,
+        "best_positive_rank": 4902.0
+      },
+      {
+        "meta_project_group": "skopt",
+        "rows": 59,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 59,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "slm_lab",
+        "rows": 68,
+        "positives": 1,
+        "TP": 0,
+        "FP": 0,
+        "FN": 1,
+        "TN": 67,
+        "best_positive_rank": 1613.0
+      },
+      {
+        "meta_project_group": "snips_nlu_dataset",
+        "rows": 18,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 18,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "split_train_and_test.py",
+        "rows": 1,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 1,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "spotlight",
+        "rows": 22,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 22,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "ssd_batch_generator.py",
+        "rows": 13,
+        "positives": 1,
+        "TP": 0,
+        "FP": 0,
+        "FN": 1,
+        "TN": 12,
+        "best_positive_rank": 3894.0
+      },
+      {
+        "meta_project_group": "strategies.py",
+        "rows": 55,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 55,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "streamlit",
+        "rows": 568,
+        "positives": 19,
+        "TP": 0,
+        "FP": 11,
+        "FN": 19,
+        "TN": 538,
+        "best_positive_rank": 162.0
+      },
+      {
+        "meta_project_group": "subpixel_test.py",
+        "rows": 5,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 5,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "syft",
+        "rows": 267,
+        "positives": 10,
+        "TP": 0,
+        "FP": 6,
+        "FN": 10,
+        "TN": 251,
+        "best_positive_rank": 87.0
+      },
+      {
+        "meta_project_group": "tensorflow_",
+        "rows": 12,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 12,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "tensorlayer",
+        "rows": 179,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 179,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "test_indexing.py",
+        "rows": 1,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 1,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "texar",
+        "rows": 328,
+        "positives": 6,
+        "TP": 0,
+        "FP": 1,
+        "FN": 6,
+        "TN": 321,
+        "best_positive_rank": 587.0
+      },
+      {
+        "meta_project_group": "tools",
+        "rows": 2,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 2,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "trdg",
+        "rows": 11,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 11,
+        "best_positive_rank": NaN
+      }
+    ]
+  },
+  "comparison": {
+    "test": {
+      "average_precision": 0.0441949299992738,
+      "roc_auc": 0.8469864341085271,
+      "precision": 0.048,
+      "recall": 0.12,
+      "f1": 0.06857142857142857,
+      "mcc": 0.06412947872188,
+      "tp": 6,
+      "fp": 119,
+      "fn": 44,
+      "tn": 6073,
+      "n": 6242,
+      "n_positive": 50,
+      "prevalence": 0.008010253123998718,
+      "random_ap_baseline": 0.008010253123998718,
+      "ap_lift_over_random": 5.517295061109342,
+      "n_predicted_positive": 125,
+      "share_predicted_positive": 0.020025632809996797,
+      "threshold": 0.8459416092065658,
+      "fit_seconds": 0.915,
+      "predict_seconds": 0.011
+    },
+    "development": {
+      "dev_cv_ap_mean": 0.01912601284843813,
+      "dev_cv_ap_std": 0.008936818462774799,
+      "dev_cv_ap_per_fold": [
+        0.021349277502258564,
+        0.018852430688512705,
+        0.03269676556935805,
+        0.009147478313016981,
+        0.01358411216904434
+      ],
+      "dev_roc_auc_fold_mean": 0.6813721242055217,
+      "dev_oof_threshold_metrics": {
+        "precision": 0.02536997885835095,
+        "recall": 0.12435233160621761,
+        "f1": 0.04214223002633889,
+        "mcc": 0.03996986742337616
+      },
+      "dev_oof_threshold_metrics_note": "optimistic: measured on the same pooled development OOF scores that were used to select the threshold; not a performance estimate"
+    },
+    "test_ap_minus_dev_cv_ap": 0.025068917150835673,
+    "warnings": [],
+    "per_project": [
+      {
+        "meta_project_group": "architectures",
+        "rows": 19,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 19,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "auto_ml",
+        "rows": 47,
+        "positives": 0,
+        "TP": 0,
+        "FP": 1,
+        "FN": 0,
+        "TN": 46,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "base.py",
+        "rows": 28,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 28,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "batchflow",
+        "rows": 144,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 144,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "bert",
+        "rows": 17,
+        "positives": 1,
+        "TP": 0,
+        "FP": 0,
+        "FN": 1,
+        "TN": 16,
+        "best_positive_rank": 1492.0
+      },
+      {
+        "meta_project_group": "bindsnet",
+        "rows": 3,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 3,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "brats",
+        "rows": 14,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 14,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "cameras.py",
+        "rows": 5,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 5,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "deeppavlov",
+        "rows": 99,
+        "positives": 2,
+        "TP": 1,
+        "FP": 3,
+        "FN": 1,
+        "TN": 94,
+        "best_positive_rank": 22.0
+      },
+      {
+        "meta_project_group": "extract_subimgs_single.py",
+        "rows": 2,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 2,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "fairseq",
+        "rows": 45,
+        "positives": 1,
+        "TP": 0,
+        "FP": 3,
+        "FN": 1,
+        "TN": 41,
+        "best_positive_rank": 208.0
+      },
+      {
+        "meta_project_group": "fer",
+        "rows": 8,
+        "positives": 5,
+        "TP": 0,
+        "FP": 0,
+        "FN": 5,
+        "TN": 3,
+        "best_positive_rank": 310.0
+      },
+      {
+        "meta_project_group": "frcnn",
+        "rows": 78,
+        "positives": 0,
+        "TP": 0,
+        "FP": 6,
+        "FN": 0,
+        "TN": 72,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "frontend",
+        "rows": 3,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 3,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "garage",
+        "rows": 131,
+        "positives": 0,
+        "TP": 0,
+        "FP": 2,
+        "FN": 0,
+        "TN": 129,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "gluonnlp",
+        "rows": 116,
+        "positives": 2,
+        "TP": 0,
+        "FP": 0,
+        "FN": 2,
+        "TN": 114,
+        "best_positive_rank": 1827.0
+      },
+      {
+        "meta_project_group": "imagekit",
+        "rows": 227,
+        "positives": 0,
+        "TP": 0,
+        "FP": 3,
+        "FN": 0,
+        "TN": 224,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "images",
+        "rows": 1,
+        "positives": 0,
+        "TP": 0,
+        "FP": 1,
+        "FN": 0,
+        "TN": 0,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "integration_test",
+        "rows": 1,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 1,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "jaxnerf",
+        "rows": 27,
+        "positives": 1,
+        "TP": 0,
+        "FP": 0,
+        "FN": 1,
+        "TN": 26,
+        "best_positive_rank": 1944.0
+      },
+      {
+        "meta_project_group": "keract",
+        "rows": 4,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 4,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "keras",
+        "rows": 2711,
+        "positives": 0,
+        "TP": 0,
+        "FP": 5,
+        "FN": 0,
+        "TN": 2706,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "keras_ssd_loss.py",
+        "rows": 3,
+        "positives": 0,
+        "TP": 0,
+        "FP": 1,
+        "FN": 0,
+        "TN": 2,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "kfac.py",
+        "rows": 16,
+        "positives": 0,
+        "TP": 0,
+        "FP": 3,
+        "FN": 0,
+        "TN": 13,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "labm8",
+        "rows": 6,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 6,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "language_model.py",
+        "rows": 5,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 5,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "liegroups",
+        "rows": 9,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 9,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "mahotas",
+        "rows": 25,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 25,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "mimic3models",
+        "rows": 6,
+        "positives": 0,
+        "TP": 0,
+        "FP": 1,
+        "FN": 0,
+        "TN": 5,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "mmdnn",
+        "rows": 13,
+        "positives": 0,
+        "TP": 0,
+        "FP": 2,
+        "FN": 0,
+        "TN": 11,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "mozregression",
+        "rows": 17,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 17,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "open_seq2seq",
+        "rows": 22,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 22,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "opennmt",
+        "rows": 164,
+        "positives": 0,
+        "TP": 0,
+        "FP": 1,
+        "FN": 0,
+        "TN": 163,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "optuna",
+        "rows": 36,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 36,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "orange",
+        "rows": 50,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 50,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "palladium",
+        "rows": 7,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 7,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "pliers",
+        "rows": 32,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 32,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "pro_gan_pytorch",
+        "rows": 84,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 84,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "pymc3",
+        "rows": 43,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 43,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "pyntcloud",
+        "rows": 9,
+        "positives": 0,
+        "TP": 0,
+        "FP": 1,
+        "FN": 0,
+        "TN": 8,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "pytorch_lightning_simple.py",
+        "rows": 6,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 6,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "qiskit",
+        "rows": 29,
+        "positives": 0,
+        "TP": 0,
+        "FP": 2,
+        "FN": 0,
+        "TN": 27,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "rastervision",
+        "rows": 102,
+        "positives": 0,
+        "TP": 0,
+        "FP": 9,
+        "FN": 0,
+        "TN": 93,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "rl_coach",
+        "rows": 206,
+        "positives": 0,
+        "TP": 0,
+        "FP": 8,
+        "FN": 0,
+        "TN": 198,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "run_tgen.py",
+        "rows": 4,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 4,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "service",
+        "rows": 9,
+        "positives": 1,
+        "TP": 0,
+        "FP": 0,
+        "FN": 1,
+        "TN": 8,
+        "best_positive_rank": 1738.0
+      },
+      {
+        "meta_project_group": "skopt",
+        "rows": 59,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 59,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "slm_lab",
+        "rows": 68,
+        "positives": 1,
+        "TP": 0,
+        "FP": 6,
+        "FN": 1,
+        "TN": 61,
+        "best_positive_rank": 521.0
+      },
+      {
+        "meta_project_group": "snips_nlu_dataset",
+        "rows": 18,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 18,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "split_train_and_test.py",
+        "rows": 1,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 1,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "spotlight",
+        "rows": 22,
+        "positives": 0,
+        "TP": 0,
+        "FP": 2,
+        "FN": 0,
+        "TN": 20,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "ssd_batch_generator.py",
+        "rows": 13,
+        "positives": 1,
+        "TP": 0,
+        "FP": 0,
+        "FN": 1,
+        "TN": 12,
+        "best_positive_rank": 2469.0
+      },
+      {
+        "meta_project_group": "strategies.py",
+        "rows": 55,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 55,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "streamlit",
+        "rows": 568,
+        "positives": 19,
+        "TP": 0,
+        "FP": 18,
+        "FN": 19,
+        "TN": 531,
+        "best_positive_rank": 336.0
+      },
+      {
+        "meta_project_group": "subpixel_test.py",
+        "rows": 5,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 5,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "syft",
+        "rows": 267,
+        "positives": 10,
+        "TP": 5,
+        "FP": 33,
+        "FN": 5,
+        "TN": 224,
+        "best_positive_rank": 2.0
+      },
+      {
+        "meta_project_group": "tensorflow_",
+        "rows": 12,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 12,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "tensorlayer",
+        "rows": 179,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 179,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "test_indexing.py",
+        "rows": 1,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 1,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "texar",
+        "rows": 328,
+        "positives": 6,
+        "TP": 0,
+        "FP": 6,
+        "FN": 6,
+        "TN": 316,
+        "best_positive_rank": 194.0
+      },
+      {
+        "meta_project_group": "tools",
+        "rows": 2,
+        "positives": 0,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 2,
+        "best_positive_rank": NaN
+      },
+      {
+        "meta_project_group": "trdg",
+        "rows": 11,
+        "positives": 0,
+        "TP": 0,
+        "FP": 2,
+        "FN": 0,
+        "TN": 9,
+        "best_positive_rank": NaN
+      }
+    ]
+  }
+}
