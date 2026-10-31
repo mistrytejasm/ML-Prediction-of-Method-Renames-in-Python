@@ -104,6 +104,23 @@ the target or a `meta_*` column. Rules for splitting, metrics and results: `docs
 2. Download `commits.zip` from the [ActRef replication package](https://figshare.com/s/984c7a39266137e29c37)
    and unzip it so the commit folders sit in `data/raw/actref/commits/`.
 
+## Local rename-risk web application (Stage 10, research prototype)
+
+Scores the methods of an uploaded Python file with the two Stage 9 models. Uploads are parsed with `ast` only,
+never executed, and not stored.
+```
+pip install -r requirements-lock.txt -r requirements-app.txt
+python run.py            # starts on http://127.0.0.1:8000 and opens the browser automatically
+```
+Badges use a user-chosen **0.70 review cutoff**, which is not validated (`--review-cutoff` changes it). The validated Stage 8 thresholds are shown in each method's details.
+Feature extraction calls the training extractor unchanged. It reproduces all 31,209 master rows exactly
+(0 mismatches in 1.31 M feature values). Model artifacts are hash-verified against the Stage 9 record before
+loading.
+
+> Experimental: the labels are automatic and no person has verified them. Held-out AP is 0.0160 (main 40) and
+> 0.0442 (comparison 42), against a random baseline of 0.0080. Scores are not calibrated probabilities. See
+> [docs/inference_guide.md](docs/inference_guide.md).
+
 ## Rebuild and validate the dataset (run from the project root)
 
 | Step | Command | Output |

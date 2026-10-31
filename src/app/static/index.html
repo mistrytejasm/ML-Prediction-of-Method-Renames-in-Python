@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RenameRisk · research prototype</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<aside class="sidebar" aria-label="Navigation">
+  <div class="brand">
+    <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 12.5 11 15l4.5-5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+    <span>RenameRisk</span>
+  </div>
+  <nav>
+    <a href="#analyze" class="nav active"><span class="ico">&#8679;</span>Analyze</a>
+    <a href="#results-anchor" class="nav"><span class="ico">&#8801;</span>Results</a>
+    <a href="#models" class="nav"><span class="ico">&#9678;</span>Model info</a>
+    <a href="#limits" class="nav"><span class="ico">!</span>Limitations</a>
+  </nav>
+  <div class="side-foot">
+    <span id="health" class="status">checking&hellip;</span>
+    <span class="muted small">local only &middot; 127.0.0.1</span>
+  </div>
+</aside>
+
+<main>
+  <header class="page-head" id="analyze">
+    <div>
+      <h1>Analyze Python Code</h1>
+      <p class="muted">Upload a <code>.py</code> file to rank its methods by model-estimated rename risk</p>
+    </div>
+    <span class="chip">Research prototype</span>
+  </header>
+
+  <section class="notice" role="note">
+    <strong>Experimental research prototype.</strong>
+    <span id="disclaimer">All 243 positive training labels and all 50 positive test labels were constructed automatically
+      and have not been verified by a person.</span>
+    Scores rank methods by <em>relative</em> rename risk. They are not calibrated probabilities, and not proof that a
+    method will be renamed. No prospective real-world validation has been performed.
+  </section>
+
+  <section class="card" aria-label="Upload">
+    <div id="drop" class="drop" tabindex="0">
+      <div class="drop-ico">&#8679;</div>
+      <p><strong>Drop a <code>.py</code> file here</strong> or <label class="link" for="file">browse</label></p>
+      <input type="file" id="file" accept=".py" hidden>
+      <p id="file-info" class="muted small">No file selected &middot; max 2 MB &middot; parsed with Python's AST, never executed, never stored</p>
+    </div>
+    <div class="row">
+      <input id="relpath" type="text" maxlength="300"
+             placeholder="Optional repository-relative path, e.g. pkg/tests/util.py (used only for the is_test_file feature)">
+      <button id="analyze-btn" disabled>Analyze</button>
+      <span id="spinner" class="spinner" hidden aria-live="polite">Analysing&hellip;</span>
+    </div>
+    <p id="error" class="error" role="alert" hidden></p>
+  </section>
+
+  <div id="results-anchor"></div>
+  <section id="results" hidden aria-label="Results">
+    <div class="card score-card">
+      <div>
+        <h2>Highest rename-risk score <span id="res-file" class="muted"></span></h2>
+        <p class="muted">Main 40 model (primary) &middot; model score on a 0&ndash;1 scale, <strong>not a probability</strong></p>
+        <p id="top-method" class="top-method"></p>
+      </div>
+      <div class="ring" role="img" aria-label="Highest main 40 score">
+        <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" class="ring-bg"/><circle cx="60" cy="60" r="52" class="ring-fg" id="ring-fg"/></svg>
+        <div class="ring-text"><b id="ring-val">&ndash;</b><span>model score</span></div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><span class="stat-ico blue">f</span><div><b id="s-scored">0</b><span>Methods scored</span></div></div>
+      <div class="stat"><span class="stat-ico red">&#9650;</span><div><b id="s-main">0</b><span id="s-main-lbl">At or above review cutoff &middot; Main 40</span></div></div>
+      <div class="stat"><span class="stat-ico amber">&#9650;</span><div><b id="s-comp">0</b><span id="s-comp-lbl">At or above review cutoff &middot; Comparison 42</span></div></div>
+      <div class="stat"><span class="stat-ico grey">&empty;</span><div><b id="s-skip">0</b><span>Not scored (outside scope)</span></div></div>
+    </div>
+    <p id="cutoff-note" class="cutoff-note small"></p>
+    <p id="skipped" class="muted small"></p>
+
+    <div class="section-head">
+      <h2>Methods ranked by risk</h2>
+      <div class="tools">
+        <input id="search" type="search" placeholder="Search method or class&hellip;">
+        <select id="sort" aria-label="Sort">
+          <option value="main">Main 40 score (primary)</option>
+          <option value="comparison">Comparison 42 score</option>
+          <option value="lineno">Line number</option>
+          <option value="name">Name</option>
+        </select>
+      </div>
+    </div>
+    <div id="list" class="list"></div>
+
+    <section class="card" id="detail" hidden aria-label="Method details">
+      <div class="detail-head">
+        <div><h2 id="d-title"></h2><p id="d-loc" class="muted"></p></div>
+        <button class="ghost" id="d-close" aria-label="Close details">&#10005;</button>
+      </div>
+      <div class="two" id="d-models"></div>
+      <div class="evidence">
+        <h3>Model evidence</h3>
+        <p class="muted small">Exact contribution of each feature to the Logistic Regression logit: coefficient &times; feature value,
+          after the model's Yeo-Johnson and scaling transforms. Positive values raise the score. This describes the model,
+          not the real reason for a rename, and it is not an AI-generated explanation.</p>
+        <div class="two" id="d-contrib"></div>
+      </div>
+      <h3>Extracted features</h3>
+      <div class="table-wrap"><table id="d-features"><thead><tr><th>Feature</th><th>Value</th><th>Used by</th></tr></thead><tbody></tbody></table></div>
+      <h3>Source</h3>
+      <pre id="d-source"></pre>
+    </section>
+  </section>
+
+  <section id="models" aria-label="Model information">
+    <h2 class="section-title">Model information</h2>
+    <div class="cards" id="model-cards"></div>
+    <p id="about" class="muted small"></p>
+  </section>
+
+  <section id="limits" class="card" aria-label="Limitations">
+    <h2>Limitations</h2>
+    <ul class="muted">
+      <li>Labels were generated automatically (similarity rule and AI first-pass review); a person has not verified any of them yet.</li>
+      <li>On 62 unseen projects, main 40 reached Average Precision 0.0160 against a random baseline of 0.0080. Comparison 42 reached 0.0442, but 5 of its 6 true positives came from one project.</li>
+      <li>Scores are uncalibrated: compare methods within a file; do not read a score as a probability.</li>
+      <li>Badges use a <strong>user-chosen 0.70 review cutoff</strong>, which is not validated: on development data it flags about 11% of methods and finds about 20% of renames, so most flagged methods will not be renamed.</li>
+      <li>The validated Stage 8 threshold (main 0.859, comparison 0.846) is shown in the method details; it transferred imperfectly to the refitted model.</li>
+      <li>One file at a time. Trained on files developers changed in ActRef commits from 323 projects; other code bases may differ.</li>
+    </ul>
+  </section>
+  <footer class="muted small">Runs locally on 127.0.0.1 &middot; uploads are parsed with Python's AST only, never executed and never stored</footer>
+</main>
+<div id="toast" class="toast" hidden role="status"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>
