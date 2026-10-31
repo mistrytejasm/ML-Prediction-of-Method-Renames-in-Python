@@ -1,0 +1,12 @@
+{
+  "name": "comparison_42",
+  "description": "File-size comparison: the 40 main features plus file_loc and file_n_methods.",
+  "feature_set": "comparison",
+  "n_features": 42,
+  "dataset": "data/processed/master/actref_master_dataset.csv",
+  "target": "renamed",
+  "group_column": "meta_project_group",
+  "primary_metric": "pr_auc",
+  "secondary_metrics": ["precision", "recall", "f1", "mcc", "roc_auc"],
+  "status": "defined; not run yet"
+}

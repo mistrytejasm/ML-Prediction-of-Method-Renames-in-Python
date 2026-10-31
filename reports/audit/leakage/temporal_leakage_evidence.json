@@ -1,0 +1,37 @@
+{
+  "before_after_pairs": 4789,
+  "pairs_byte_identical": 47,
+  "decomposition_matches_call_sites": true,
+  "rows": 31209,
+  "share_with_other_file_calls": {
+    "renamed": 0.4567901234567901,
+    "not_renamed": 0.3853581347284118
+  },
+  "mean_own_file_calls": {
+    "renamed": 1.1975308641975309,
+    "not_renamed": 2.8229348317509526
+  },
+  "mean_call_sites": {
+    "renamed": 2.905349794238683,
+    "not_renamed": 5.999031195504747
+  },
+  "median_files_in_commit": {
+    "renamed": 4.0,
+    "not_renamed": 5.0
+  },
+  "renamed_with_other_file_callers": 111,
+  "of_which_callers_updated_to_new_name": 92,
+  "auc": {
+    "call_sites": 0.46997583171666574,
+    "own_file_calls": 0.4484975423729039,
+    "other_file_calls": 0.5210818635811639,
+    "rel_call_sites": 0.56583631217459,
+    "commit_files": 0.4332015945272779
+  },
+  "rel_before_only_recompute": {
+    "files": 400,
+    "values_checked": 33232,
+    "mismatches": 0
+  },
+  "max_groups_per_commit": 1
+}

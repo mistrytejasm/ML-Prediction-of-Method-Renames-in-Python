@@ -1,0 +1,27 @@
+# requirements-lock.txt: exact package versions of the reference environment.
+# Generated with `pip freeze` on 2026-10-31 from the project .venv (Python 3.12.0, Windows, pip 23.2.1).
+#
+# requirements.txt   = declared dependencies: what the project needs, as minimum versions.
+# requirements-lock.txt = locked dependencies: the exact versions every result was produced with.
+#
+# Reproduce the environment exactly:
+#   python -m venv .venv
+#   .venv\Scripts\activate            (Windows)  |  source .venv/bin/activate  (Linux/macOS)
+#   pip install -r requirements-lock.txt
+#
+# Update only deliberately: change requirements.txt, install, re-run the test suite, then regenerate this file.
+
+cloudpickle==3.1.2
+et_xmlfile==2.0.0
+joblib==1.6.0
+lightgbm==4.7.0
+narwhals==2.28.0
+numpy==2.5.4
+openpyxl==3.1.5
+pandas==3.1.0
+python-dateutil==3.0.0
+scikit-learn==1.9.1
+scipy==1.18.1
+six==1.17.0
+threadpoolctl==3.7.0
+tzdata==2026.6

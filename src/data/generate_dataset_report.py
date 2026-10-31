@@ -25,6 +25,8 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from src import config  # noqa: E402
+from src.features.feature_sets import (COMPARISON_FEATURES, COMPARISON_ONLY, DROPPED_FEATURES,  # noqa: E402
+                                       EXCLUDED_LEAKAGE, MAIN_FEATURES, check_configurations)
 
 log = logging.getLogger("generate_dataset_report")
 
@@ -92,28 +94,9 @@ for col in ["name_len", "name_tokens", "loc", "n_params", "n_calls", "cyclomatic
         f"{col} - mean({col}) over non-dunder, non-test Before methods of the file",
         rel_note)
 
-# ---- Approved experimental training configurations (approved 2026-10-31).
+# ---- Approved experimental training configurations: defined once in src/features/feature_sets.py.
 # The 46-feature master dataset is not changed; these lists only select columns for training.
-EXCLUDED_LEAKAGE = ["call_sites", "rel_call_sites"]   # search scope = the future commit's changed files
-DROPPED = ["class_depth", "is_async"]                 # near-duplicate of in_class / near-constant
-COMPARISON_ONLY = ["file_loc", "file_n_methods"]      # file size: comparison experiment only
-COMPARISON_FEATURES = [f for f in config.FEATURES if f not in EXCLUDED_LEAKAGE + DROPPED]
-MAIN_FEATURES = [f for f in COMPARISON_FEATURES if f not in COMPARISON_ONLY]
 LEAKY_BEFORE_ONLY = "Before text, but only of the files the future commit changed"
-
-
-def check_configurations():
-    """Fail loudly if a configuration ever includes a feature it must not."""
-    for name, feats in (("main", MAIN_FEATURES), ("comparison", COMPARISON_FEATURES)):
-        bad = set(feats) & set(EXCLUDED_LEAKAGE + DROPPED)
-        if bad:
-            raise SystemExit(f"{name} configuration includes excluded or dropped features: {sorted(bad)}")
-    if set(MAIN_FEATURES) & set(COMPARISON_ONLY):
-        raise SystemExit("file_loc / file_n_methods must not be main features")
-    if set(COMPARISON_FEATURES) - set(MAIN_FEATURES) != set(COMPARISON_ONLY):
-        raise SystemExit("comparison must equal main + file_loc + file_n_methods")
-    if (len(MAIN_FEATURES), len(COMPARISON_FEATURES)) != (40, 42):
-        raise SystemExit(f"expected 40 / 42 features, got {len(MAIN_FEATURES)} / {len(COMPARISON_FEATURES)}")
 
 
 def use_in_model(f, async_rows, async_renamed, equal_pct, pearson):
@@ -272,7 +255,7 @@ def main(argv=None):
         "| Configuration | Features | Definition |",
         "|---|---|---|",
         f"| Main experiment | **{len(MAIN_FEATURES)}** | {len(config.FEATURES)} minus "
-        + ", ".join(f"`{f}`" for f in EXCLUDED_LEAKAGE + DROPPED + COMPARISON_ONLY) + " |",
+        + ", ".join(f"`{f}`" for f in EXCLUDED_LEAKAGE + DROPPED_FEATURES + COMPARISON_ONLY) + " |",
         f"| Comparison experiment | **{len(COMPARISON_FEATURES)}** | Main + "
         + ", ".join(f"`{f}`" for f in COMPARISON_ONLY) + " |", "",
         "| Not used in either experiment | Reason |",

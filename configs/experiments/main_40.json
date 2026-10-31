@@ -1,0 +1,12 @@
+{
+  "name": "main_40",
+  "description": "Primary experiment: the 40 approved Before-only features.",
+  "feature_set": "main",
+  "n_features": 40,
+  "dataset": "data/processed/master/actref_master_dataset.csv",
+  "target": "renamed",
+  "group_column": "meta_project_group",
+  "primary_metric": "pr_auc",
+  "secondary_metrics": ["precision", "recall", "f1", "mcc", "roc_auc"],
+  "status": "defined; not run yet"
+}
