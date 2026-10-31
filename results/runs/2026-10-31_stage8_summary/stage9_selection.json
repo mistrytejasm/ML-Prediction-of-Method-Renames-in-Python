@@ -1,0 +1,20 @@
+{
+  "rule": {
+    "candidates_simplest_first": [
+      "logistic_regression__log1p_asinh",
+      "logistic_regression__yeo_johnson",
+      "random_forest",
+      "lightgbm"
+    ],
+    "rule": "per feature set, the candidate with the highest CV AP mean; exact tie -> the simpler (earlier) candidate; one held-out evaluation per feature set",
+    "never_selected": [
+      "dummy_prior",
+      "stratified_random",
+      "naming_heuristic"
+    ]
+  },
+  "selected": {
+    "main": "logistic_regression__main__yeo_johnson",
+    "comparison": "logistic_regression__comparison__yeo_johnson"
+  }
+}

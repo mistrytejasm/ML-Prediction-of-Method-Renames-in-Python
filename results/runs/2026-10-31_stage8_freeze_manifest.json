@@ -1,0 +1,690 @@
+{
+  "manifest": "Stage 8 reproducibility freeze",
+  "created_utc": "2026-10-31T15:26:38+00:00",
+  "objective": "Development cross-validation of chance references, an exploratory naming heuristic and three model families (Logistic Regression with two transforms, Random Forest, LightGBM) for predicting whether a Python method is renamed in the next commit, from Before-version features.",
+  "dataset_scope": {
+    "partition": "development rows only",
+    "rows": 24967,
+    "projects": 261,
+    "positives": 193,
+    "folds": "5 saved grouped (project) folds",
+    "held_out_test": "not loaded, not evaluated"
+  },
+  "execution_window_utc": {
+    "first_run_started": "2026-10-31T13:51:37.985784+00:00",
+    "last_run_finished": "2026-10-31T13:52:16.802610+00:00"
+  },
+  "inputs": {
+    "master_dataset": {
+      "path": "data/processed/master/actref_master_dataset.csv",
+      "sha256": "e6a8fd476feb87406846327093f9d8157a1238e7bd6f9fb7a50b60e659b8a8f0"
+    },
+    "master_schema": {
+      "path": "data/processed/master/actref_master_dataset_schema.json",
+      "sha256": "6cd9d69f52d48fe34b198350b94988ade23fa36c00ddeb37948c46f05747a39c"
+    },
+    "split_csv": {
+      "path": "data/processed/splits/project_split_seed42.csv",
+      "sha256": "00644a426bf1d835c76101dd3aab4fe6613228ecc0888fd8913881122df7f7d1"
+    },
+    "split_metadata": {
+      "path": "data/processed/splits/project_split_seed42.json",
+      "sha256": "28ff931c02bc032ca5e5cd9196540e595065021a563fd564dce37744b0323d56",
+      "split_hash": "16b4fac620af776ab3b018187b4a67e4c1be27f9d009a7acbab2ef6a8039f14c"
+    },
+    "stage8_config": {
+      "path": "configs/runs/stage8_development_cv.json",
+      "sha256": "f57af623c7b890c4c74ad06270c23dbbeb6bddbad2d8927095a9046ae9687c6d"
+    },
+    "feature_set_configs": {
+      "configs/experiments/main_40.json": "b5024014edf6f181cd3a1dc0a6ec5e816dff598e43e62fb1698ee1af1c494612",
+      "configs/experiments/comparison_42.json": "388d16c8dc9e7fd1ec9155bb18b68f68bea15223b572e336e86ca98349d053cc"
+    }
+  },
+  "feature_sets": {
+    "definition_file": {
+      "path": "src/features/feature_sets.py",
+      "sha256": "5a79aeda2c2f1d4b99fe2a90f33d4c2780abb97c6f8a447f1ee90a078694507c"
+    },
+    "main": {
+      "n": 40,
+      "role": "primary",
+      "sha256_of_ordered_names": "ac11ed6b149d3b84187ecde4eb3702e60666908862c79d3d711f7ccdb224f6c1",
+      "features": [
+        "name_len",
+        "name_tokens",
+        "name_is_private",
+        "name_is_camel",
+        "name_has_digit",
+        "name_short_tokens",
+        "name_no_vowel_tokens",
+        "name_starts_verb",
+        "name_single_char",
+        "loc",
+        "n_params",
+        "n_defaults",
+        "has_varargs",
+        "has_kwargs",
+        "n_returns",
+        "n_calls",
+        "cyclomatic",
+        "max_nesting",
+        "has_docstring",
+        "doc_len",
+        "is_stub",
+        "n_decorators",
+        "is_property",
+        "is_static_or_class",
+        "name_body_overlap",
+        "in_class",
+        "class_n_methods",
+        "is_test_file",
+        "style_mismatch",
+        "name_token_sharing",
+        "first_token_shared",
+        "style_share_in_file",
+        "rel_name_len",
+        "rel_name_tokens",
+        "rel_loc",
+        "rel_n_params",
+        "rel_n_calls",
+        "rel_cyclomatic",
+        "rel_doc_len",
+        "rel_name_body_overlap"
+      ]
+    },
+    "comparison": {
+      "n": 42,
+      "role": "secondary (main + file_loc, file_n_methods)",
+      "sha256_of_ordered_names": "c8d0f5c4eda5879131617f43a3528500481b9b73351effbced95d63f0bbcfda1",
+      "features": [
+        "name_len",
+        "name_tokens",
+        "name_is_private",
+        "name_is_camel",
+        "name_has_digit",
+        "name_short_tokens",
+        "name_no_vowel_tokens",
+        "name_starts_verb",
+        "name_single_char",
+        "loc",
+        "n_params",
+        "n_defaults",
+        "has_varargs",
+        "has_kwargs",
+        "n_returns",
+        "n_calls",
+        "cyclomatic",
+        "max_nesting",
+        "has_docstring",
+        "doc_len",
+        "is_stub",
+        "n_decorators",
+        "is_property",
+        "is_static_or_class",
+        "name_body_overlap",
+        "in_class",
+        "class_n_methods",
+        "file_n_methods",
+        "file_loc",
+        "is_test_file",
+        "style_mismatch",
+        "name_token_sharing",
+        "first_token_shared",
+        "style_share_in_file",
+        "rel_name_len",
+        "rel_name_tokens",
+        "rel_loc",
+        "rel_n_params",
+        "rel_n_calls",
+        "rel_cyclomatic",
+        "rel_doc_len",
+        "rel_name_body_overlap"
+      ]
+    },
+    "hash_definition": "sha256 of json.dumps(<ordered list of feature names>)"
+  },
+  "code": {
+    "git_branch": "feature/stage-8-development-cv",
+    "git_commit": "669f07ed3c58e5678f963adb6a4cc0d98a748664",
+    "working_tree_dirty": true,
+    "git_status_at_freeze": [
+      "M docs/experiment_protocol.md",
+      " M results/runs/README.md",
+      "?? configs/runs/",
+      "?? docs/stage8_execution_guide.md",
+      "?? results/runs/2026-10-31_stage8_dummy_prior__comparison/",
+      "?? results/runs/2026-10-31_stage8_dummy_prior__main/",
+      "?? results/runs/2026-10-31_stage8_lightgbm__comparison/",
+      "?? results/runs/2026-10-31_stage8_lightgbm__main/",
+      "?? results/runs/2026-10-31_stage8_logistic_regression__comparison__log1p_asinh/",
+      "?? results/runs/2026-10-31_stage8_logistic_regression__comparison__yeo_johnson/",
+      "?? results/runs/2026-10-31_stage8_logistic_regression__main__log1p_asinh/",
+      "?? results/runs/2026-10-31_stage8_logistic_regression__main__yeo_johnson/",
+      "?? results/runs/2026-10-31_stage8_naming_heuristic__comparison/",
+      "?? results/runs/2026-10-31_stage8_naming_heuristic__main/",
+      "?? results/runs/2026-10-31_stage8_random_forest__comparison/",
+      "?? results/runs/2026-10-31_stage8_random_forest__main/",
+      "?? results/runs/2026-10-31_stage8_stratified_random__comparison/",
+      "?? results/runs/2026-10-31_stage8_stratified_random__main/",
+      "?? results/runs/2026-10-31_stage8_summary/",
+      "?? src/evaluation/cross_validate.py",
+      "?? src/evaluation/run_stage8.py",
+      "?? src/evaluation/run_store.py",
+      "?? tests/stage8_synthetic.py",
+      "?? tests/test_stage8.py"
+    ],
+    "run_provenance_git": {
+      "commit": [
+        "669f07ed3c58e5678f963adb6a4cc0d98a748664"
+      ],
+      "dirty": [
+        true
+      ],
+      "dirty_paths": [
+        "M docs/experiment_protocol.md",
+        "?? configs/runs/",
+        "?? docs/stage8_execution_guide.md",
+        "?? src/evaluation/cross_validate.py",
+        "?? src/evaluation/run_stage8.py",
+        "?? src/evaluation/run_store.py",
+        "?? tests/stage8_synthetic.py",
+        "?? tests/test_stage8.py"
+      ]
+    },
+    "source_files": [
+      {
+        "path": "src/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "modified_utc": "2026-10-31T04:34:04+00:00",
+        "git": "identical to HEAD"
+      },
+      {
+        "path": "src/config.py",
+        "sha256": "7f57d0ae6c97de02729d2c5d2e18b8a03717c78feecb87c253aeab9dbd123ca9",
+        "modified_utc": "2026-10-31T05:35:31+00:00",
+        "git": "identical to HEAD"
+      },
+      {
+        "path": "src/data/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "modified_utc": "2026-10-31T04:34:04+00:00",
+        "git": "identical to HEAD"
+      },
+      {
+        "path": "src/data/load_master.py",
+        "sha256": "2270df2fba3c7870ed048f1127437d3f15ee946260e80ee2c64e0a628f7f8609",
+        "modified_utc": "2026-10-31T05:35:31+00:00",
+        "git": "identical to HEAD"
+      },
+      {
+        "path": "src/data/prepare_dataset.py",
+        "sha256": "6bea9bde275e6fdb3b5869976612f3ac01f48ca60644dd034d63724b0f1a50d2",
+        "modified_utc": "2026-10-31T10:34:32+00:00",
+        "git": "identical to HEAD"
+      },
+      {
+        "path": "src/features/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "modified_utc": "2026-10-31T04:34:04+00:00",
+        "git": "identical to HEAD"
+      },
+      {
+        "path": "src/features/feature_sets.py",
+        "sha256": "5a79aeda2c2f1d4b99fe2a90f33d4c2780abb97c6f8a447f1ee90a078694507c",
+        "modified_utc": "2026-10-31T05:35:31+00:00",
+        "git": "identical to HEAD"
+      },
+      {
+        "path": "src/features/transform_groups.py",
+        "sha256": "95b80df5e64d8cfb85fb0a66df134565988b665001e8766ef472b3e93440388a",
+        "modified_utc": "2026-10-31T06:48:49+00:00",
+        "git": "identical to HEAD"
+      },
+      {
+        "path": "src/features/method_features.py",
+        "sha256": "e04473a3b799b0d551b0a2748504f80fcf7656d6156a106b1a109685c121938e",
+        "modified_utc": "2026-10-31T04:34:04+00:00",
+        "git": "identical to HEAD"
+      },
+      {
+        "path": "src/preprocessing/__init__.py",
+        "sha256": "b3220f9b29088c635a4c8b4ace92fcdf5d446d16a31b1a43694e1d792a9e0a2b",
+        "modified_utc": "2026-10-31T05:35:31+00:00",
+        "git": "identical to HEAD"
+      },
+      {
+        "path": "src/preprocessing/transforms.py",
+        "sha256": "36a7362f3e05e7cd38d7623760d42547fa14951c651de2ff64b16784157ac63f",
+        "modified_utc": "2026-10-31T10:52:49+00:00",
+        "git": "identical to HEAD"
+      },
+      {
+        "path": "src/models/__init__.py",
+        "sha256": "b50a430786dd29e208590104274160ed920f777a4e2b889340bc35227c4ec891",
+        "modified_utc": "2026-10-31T05:35:31+00:00",
+        "git": "identical to HEAD"
+      },
+      {
+        "path": "src/models/pipelines.py",
+        "sha256": "486c53bf88842dd93660ad89f58649fb7795d7f01736bf06bbe8174522ffc973",
+        "modified_utc": "2026-10-31T12:44:25+00:00",
+        "git": "identical to HEAD"
+      },
+      {
+        "path": "src/models/baselines.py",
+        "sha256": "79b100ee1def9e50d7275eb64dc99d6d97c02f06d9e266c2c1c775d546d4c1a9",
+        "modified_utc": "2026-10-31T12:44:25+00:00",
+        "git": "identical to HEAD"
+      },
+      {
+        "path": "src/evaluation/__init__.py",
+        "sha256": "a72c1c89224cd450de896e8d7d55da5b7678e771125ff363dc20124652a2cbad",
+        "modified_utc": "2026-10-31T11:02:38+00:00",
+        "git": "identical to HEAD"
+      },
+      {
+        "path": "src/evaluation/splits.py",
+        "sha256": "30a93e59e5f8d11616d7075072f21581c75932593f7dd51fa3a1f419a44f2448",
+        "modified_utc": "2026-10-31T06:54:01+00:00",
+        "git": "identical to HEAD"
+      },
+      {
+        "path": "src/evaluation/metrics.py",
+        "sha256": "57c0078aed93d60523bd61bcc34fba580e4c7bd4e5fa55b499fb2f8b8d7d523e",
+        "modified_utc": "2026-10-31T11:12:31+00:00",
+        "git": "identical to HEAD"
+      },
+      {
+        "path": "src/evaluation/cross_validate.py",
+        "sha256": "c3aa3393fedb63c412330b9c5089cd69dd232c488baf2a18df452b8806b3a3fb",
+        "modified_utc": "2026-10-31T13:35:43+00:00",
+        "git": "untracked"
+      },
+      {
+        "path": "src/evaluation/run_store.py",
+        "sha256": "66070c9e3b0f79d7016359840d1adf1196c49b9dbdd2a407a19fdd108a77b186",
+        "modified_utc": "2026-10-31T13:39:08+00:00",
+        "git": "untracked"
+      },
+      {
+        "path": "src/evaluation/run_stage8.py",
+        "sha256": "a4554fa95815f72b4b2405c1db4884ad2688d0bb8041ac09c967f45bf6ff150a",
+        "modified_utc": "2026-10-31T13:34:29+00:00",
+        "git": "untracked"
+      }
+    ],
+    "note": "The Stage 8 runner files were untracked when the runs executed. Every source file listed here was last modified before the first run started, and the tracked ones are identical to the commit above, so these hashes identify the code that produced the results."
+  },
+  "environment": {
+    "python": "3.12.0",
+    "packages": {
+      "numpy": "2.5.4",
+      "pandas": "3.1.0",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1",
+      "lightgbm": "4.7.0"
+    },
+    "requirements_lock": {
+      "path": "requirements-lock.txt",
+      "sha256": "a493f8db091d2b3fdab92806a8fd51ba8cf86571102e8d0ce3d8d4d10379d7ea"
+    },
+    "run_provenance_packages": [
+      "{\"lightgbm\": \"4.7.0\", \"numpy\": \"2.5.4\", \"pandas\": \"3.1.0\", \"scikit-learn\": \"1.9.1\", \"scipy\": \"1.18.1\"}"
+    ]
+  },
+  "runs": [
+    {
+      "run_id": "dummy_prior__main",
+      "path": "results/runs/2026-10-31_stage8_dummy_prior__main",
+      "model": "dummy_prior",
+      "feature_set": "main",
+      "transform": "none",
+      "role": "chance_reference",
+      "research_status": "reference",
+      "status": "complete",
+      "cv_average_precision_mean": 0.007730040298382859,
+      "cv_average_precision_std_ddof1": 0.0002982527721375084,
+      "files": {
+        "fold_metrics.csv": "0d2b66c76429cefa41d626061b3bf4aa436fa7d6a78d2ffede86e37e58f48549",
+        "oof_predictions.csv": "1a882f859a7d6649223185555e98c758e5f87bdd560a105c3b14c560fd7eb519",
+        "provenance.json": "aa43bc9fef68d749389eef0c854fd53d439128590cce709bddeca5b4eb5a0ece",
+        "run_config.json": "af60d14b4ed6e3e10fc5dd54181cd28541fe95a3c812bcc4665a5aefeacbeb41",
+        "summary.json": "e9a46eae3e613314094afa7e6727dfdfb4b4facd6523e6c4849c4aa63aa7362e",
+        "warnings.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      }
+    },
+    {
+      "run_id": "dummy_prior__comparison",
+      "path": "results/runs/2026-10-31_stage8_dummy_prior__comparison",
+      "model": "dummy_prior",
+      "feature_set": "comparison",
+      "transform": "none",
+      "role": "chance_reference",
+      "research_status": "reference",
+      "status": "complete",
+      "cv_average_precision_mean": 0.007730040298382859,
+      "cv_average_precision_std_ddof1": 0.0002982527721375084,
+      "files": {
+        "fold_metrics.csv": "f696926ac6849902a96622d2562aa07d074c024e6d7f153bd4748fc007a7ca8f",
+        "oof_predictions.csv": "1a882f859a7d6649223185555e98c758e5f87bdd560a105c3b14c560fd7eb519",
+        "provenance.json": "9584763f1b688c00f9d24687739ad735306fbfffd8e70f7526466fb6899f7512",
+        "run_config.json": "bd1344cdaa2088552fa9cbb02e18559f71840434bb0af5f3348caa10c0289231",
+        "summary.json": "c4a123c3b9621e9861d0c10f9b6cd3b33b0e8781aa41ef1b01ed50387d563130",
+        "warnings.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      }
+    },
+    {
+      "run_id": "stratified_random__main",
+      "path": "results/runs/2026-10-31_stage8_stratified_random__main",
+      "model": "stratified_random",
+      "feature_set": "main",
+      "transform": "none",
+      "role": "chance_reference",
+      "research_status": "reference",
+      "status": "complete",
+      "cv_average_precision_mean": 0.009003449327748188,
+      "cv_average_precision_std_ddof1": 0.001503565702153786,
+      "files": {
+        "fold_metrics.csv": "81230f23b40a2073d4b9a0b7160ebb90392cfe49108a8bc1af6a45b14f921895",
+        "oof_predictions.csv": "0cf7ef409ce017a656371dcd8011ab6b484fe99dfaeef6573162acd6b58e6534",
+        "provenance.json": "9df84711b9d02834496671762e0240289c61dafe906112845588616c11be02fe",
+        "run_config.json": "134c13e619bd9ef1816370672193b5c67b64741d65b340921740717d4b9bbcfc",
+        "summary.json": "1410156339da1687fbf4756f0a49cbcc37ecb7d5c457edf290fc2f2fb71ff4a1",
+        "warnings.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      }
+    },
+    {
+      "run_id": "stratified_random__comparison",
+      "path": "results/runs/2026-10-31_stage8_stratified_random__comparison",
+      "model": "stratified_random",
+      "feature_set": "comparison",
+      "transform": "none",
+      "role": "chance_reference",
+      "research_status": "reference",
+      "status": "complete",
+      "cv_average_precision_mean": 0.009003449327748188,
+      "cv_average_precision_std_ddof1": 0.001503565702153786,
+      "files": {
+        "fold_metrics.csv": "efff21b64101c6c9dd3e2388e26246803d2d63833e643e74894203252439b27e",
+        "oof_predictions.csv": "0cf7ef409ce017a656371dcd8011ab6b484fe99dfaeef6573162acd6b58e6534",
+        "provenance.json": "32d5bc4177482a7d37e1b9e14c41de6c0335f21b5c98aa21fc6ec7d28360cb3d",
+        "run_config.json": "67d92e10ad38d350cce1cc91c136b261c1277b00c2a8670e345dcfdf5a14b0ec",
+        "summary.json": "703ba4f5e58bae53ad6aae9d766fd4c9c67abc5a959e1539b1dc7e1707df905b",
+        "warnings.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      }
+    },
+    {
+      "run_id": "naming_heuristic__main",
+      "path": "results/runs/2026-10-31_stage8_naming_heuristic__main",
+      "model": "naming_heuristic",
+      "feature_set": "main",
+      "transform": "none",
+      "role": "exploratory_heuristic",
+      "research_status": "exploratory_post_hoc",
+      "status": "complete",
+      "cv_average_precision_mean": 0.009715519333060604,
+      "cv_average_precision_std_ddof1": 0.0031664988794139035,
+      "files": {
+        "fold_metrics.csv": "13083644fa5d3014b8de660da364597d9281bfc10d390de3921c504a21e96f27",
+        "oof_predictions.csv": "1a22de3d989840dfafde834ab00df5c2e7851443bcd8918dfcb18c7ee981a608",
+        "provenance.json": "3d35cb4740c87289729b744484a6555cb88804e5af85492d8ba65e03353676fe",
+        "run_config.json": "92b67289517b44310f132bda5b84e12f1425cb7cdd04b4782e835a8085b76341",
+        "summary.json": "9ad0fcd1a6fb1dda57afa1495b072d3910974d96b2042b1758ca903f7dece9cb",
+        "warnings.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      }
+    },
+    {
+      "run_id": "naming_heuristic__comparison",
+      "path": "results/runs/2026-10-31_stage8_naming_heuristic__comparison",
+      "model": "naming_heuristic",
+      "feature_set": "comparison",
+      "transform": "none",
+      "role": "exploratory_heuristic",
+      "research_status": "exploratory_post_hoc",
+      "status": "complete",
+      "cv_average_precision_mean": 0.009715519333060604,
+      "cv_average_precision_std_ddof1": 0.0031664988794139035,
+      "files": {
+        "fold_metrics.csv": "7b1def26ad097c8793d54d331c87fb4f5dbfdaaa8ac25ffccf88407a99b0d081",
+        "oof_predictions.csv": "1a22de3d989840dfafde834ab00df5c2e7851443bcd8918dfcb18c7ee981a608",
+        "provenance.json": "f0d41950586add9de5b3c38347205770e4bafd53429bd5787869c44c78a30797",
+        "run_config.json": "ebb2529e2a38fda3740c101e14763e2bf51fa87d5e5e1e4ec2221393ebaf944f",
+        "summary.json": "12d0a81884b595cba8bf1e0c00671fe92327a39fac17219dba8b70f63c384ed0",
+        "warnings.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      }
+    },
+    {
+      "run_id": "logistic_regression__main__log1p_asinh",
+      "path": "results/runs/2026-10-31_stage8_logistic_regression__main__log1p_asinh",
+      "model": "logistic_regression",
+      "feature_set": "main",
+      "transform": "log1p_asinh",
+      "role": "confirmatory_model",
+      "research_status": "confirmatory",
+      "status": "complete",
+      "cv_average_precision_mean": 0.013000591795945846,
+      "cv_average_precision_std_ddof1": 0.0042030385902540315,
+      "files": {
+        "fold_metrics.csv": "63437fc67b57b049f7e4c6df205a8af7dbc2ba9f7135e9b2bd2ede7d04b2179a",
+        "oof_predictions.csv": "a4df9986cf7b9ff40c143acb29eb336d7dd4382cc33d9694a9f2e4f2caa597ab",
+        "provenance.json": "10125cc4c79b3192477f1859f289684f3c79f433c58e22de51005dc8a1638a39",
+        "run_config.json": "463f8c43b313365a2b7ead1fc2e48d445f0c948cf867879f894189bb0b7bfed0",
+        "summary.json": "78a08c9060b35b5fa8e938b559f1b6e299516a0de0da3962820ff3cd3d90d0e0",
+        "warnings.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      }
+    },
+    {
+      "run_id": "logistic_regression__comparison__log1p_asinh",
+      "path": "results/runs/2026-10-31_stage8_logistic_regression__comparison__log1p_asinh",
+      "model": "logistic_regression",
+      "feature_set": "comparison",
+      "transform": "log1p_asinh",
+      "role": "confirmatory_model",
+      "research_status": "confirmatory",
+      "status": "complete",
+      "cv_average_precision_mean": 0.018767725946084814,
+      "cv_average_precision_std_ddof1": 0.010473045081248978,
+      "files": {
+        "fold_metrics.csv": "3f3a621dde876d2a45ac6902fcc833eff29289c6a1015e41ecdec7c7806986d6",
+        "oof_predictions.csv": "aa1d60251ad7ec57fdb94e14608e30d64aba1267250a44312b8916b7bf897a9f",
+        "provenance.json": "7b7a6e77fd4c412fb549aba446b90ed42a1d20c6644c039e17d0740910dcc0af",
+        "run_config.json": "71ff5e3b357fb6c8ca275051c088ad8dddabb863c541e2188596b1ff92e0474d",
+        "summary.json": "1caf8648f2b7dd0a0c1de8fa7e4ca5cb66d6919d5297cbca7d7ef7bfbbbccfb7",
+        "warnings.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      }
+    },
+    {
+      "run_id": "logistic_regression__main__yeo_johnson",
+      "path": "results/runs/2026-10-31_stage8_logistic_regression__main__yeo_johnson",
+      "model": "logistic_regression",
+      "feature_set": "main",
+      "transform": "yeo_johnson",
+      "role": "confirmatory_model_transform_experiment",
+      "research_status": "confirmatory",
+      "status": "complete",
+      "cv_average_precision_mean": 0.013270931619669768,
+      "cv_average_precision_std_ddof1": 0.0034514713200503367,
+      "files": {
+        "fold_metrics.csv": "f6961637cc522f320b94acc6295879e7588700b076483ac9f043c128f45155bd",
+        "oof_predictions.csv": "54b9020970b88b2dbe7855ec83ce6a2c54c2fea55a44352bf7f0038c89ca406b",
+        "provenance.json": "30395fd0baeb747b79e9ed2ac21c922f26c5e8f57cc418644056bdd80d39a9ea",
+        "run_config.json": "3822f6f2e0e5bb6d80a9e98357a812e6e09717d81ca166343d8a4c21f32a4d43",
+        "summary.json": "1d11ac4fc3e6c4e589ec285615bf022cbc50aad99409cdf45074e8539af625c7",
+        "warnings.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      }
+    },
+    {
+      "run_id": "logistic_regression__comparison__yeo_johnson",
+      "path": "results/runs/2026-10-31_stage8_logistic_regression__comparison__yeo_johnson",
+      "model": "logistic_regression",
+      "feature_set": "comparison",
+      "transform": "yeo_johnson",
+      "role": "confirmatory_model_transform_experiment",
+      "research_status": "confirmatory",
+      "status": "complete",
+      "cv_average_precision_mean": 0.01912601284843813,
+      "cv_average_precision_std_ddof1": 0.008936818462774799,
+      "files": {
+        "fold_metrics.csv": "2cc1fea4b15a87542ed9a8380a07717fd4663156c9f5599d8a110017d4369c7f",
+        "oof_predictions.csv": "3456964cbd3d8046723203182684aca45ff2ef545027c03ed75f3b22cc31d42f",
+        "provenance.json": "19eedd1de08a904f4f22060293e04fadbb840d5f4003860a3a21d52be0210540",
+        "run_config.json": "704976d3e5903e016610c5f02e987540eec80f1b2393f1355f6d390d9b1491e8",
+        "summary.json": "d151fa51d4cd3555e05466c11baa49da2fb48950a1617d89b972fb7efba06ffd",
+        "warnings.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      }
+    },
+    {
+      "run_id": "random_forest__main",
+      "path": "results/runs/2026-10-31_stage8_random_forest__main",
+      "model": "random_forest",
+      "feature_set": "main",
+      "transform": "none",
+      "role": "confirmatory_model",
+      "research_status": "confirmatory",
+      "status": "complete",
+      "cv_average_precision_mean": 0.011448269065958272,
+      "cv_average_precision_std_ddof1": 0.0032834596764135956,
+      "files": {
+        "fold_metrics.csv": "9c15d25a278898b0245659c368fe1298fcf7ddc9fb9c2aa5df03d90535096324",
+        "oof_predictions.csv": "b8e0dbfa828e5b3dadef896fb98e42ca8854f64b0a668d88fedb50ed5ea4ddff",
+        "provenance.json": "34b0025a3e395d94b03161e61b8a28eba4a7d76ec9d38d624c317809c4b3971d",
+        "run_config.json": "86301708928dbc3cae92b9814e24f1dc230d718660401a6ef5ad13aceb1a32fd",
+        "summary.json": "b466536ff7dcfea14698f776694d1270b142111c8543d13638079ad6297deb97",
+        "warnings.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      }
+    },
+    {
+      "run_id": "random_forest__comparison",
+      "path": "results/runs/2026-10-31_stage8_random_forest__comparison",
+      "model": "random_forest",
+      "feature_set": "comparison",
+      "transform": "none",
+      "role": "confirmatory_model",
+      "research_status": "confirmatory",
+      "status": "complete",
+      "cv_average_precision_mean": 0.013512204446983717,
+      "cv_average_precision_std_ddof1": 0.004036937173174561,
+      "files": {
+        "fold_metrics.csv": "f10dbbb60df49992c0a1c9eec4417ec77e722dbeb6930f1b713c93e1851af0d7",
+        "oof_predictions.csv": "323d1e596efc0ba055c8c125f66a6ec0055325429b31599290a487c29530f505",
+        "provenance.json": "691be4db82f69cfe2498acf58a47e48a57e3660fabe1fb62550c1566691d7512",
+        "run_config.json": "59ab5ca1213b8a027ad79d5af30181c279ec5434f36f257037e627989289f978",
+        "summary.json": "c5b54e138cb0dfa6b042190bb09f7d7c381d731f94638658068795d47022cf1d",
+        "warnings.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      }
+    },
+    {
+      "run_id": "lightgbm__main",
+      "path": "results/runs/2026-10-31_stage8_lightgbm__main",
+      "model": "lightgbm",
+      "feature_set": "main",
+      "transform": "none",
+      "role": "confirmatory_model",
+      "research_status": "confirmatory",
+      "status": "complete",
+      "cv_average_precision_mean": 0.010318212753840473,
+      "cv_average_precision_std_ddof1": 0.0034110773729660753,
+      "files": {
+        "fold_metrics.csv": "ad3a67df98ee1a1ac43f84641114488629a2ae1d1f38bf902d8cb255182915a2",
+        "oof_predictions.csv": "89e83289dceb8ed392c955456e89bda5a8877c9692bcc1b071cf9b537ac9a7f6",
+        "provenance.json": "8276d4ac72c424baf61f7f5c258cb28cd7c33ec03080f07485e42a6a2b1fb9c3",
+        "run_config.json": "68e25098b16ca5354e9554345276be52e1b637ddcbbfcd073b8e3db7a4a7e213",
+        "summary.json": "8aefbf13f50ed313addc7669b1cba357b5f714c0236c323020c17b9a1c7ce1b2",
+        "warnings.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      }
+    },
+    {
+      "run_id": "lightgbm__comparison",
+      "path": "results/runs/2026-10-31_stage8_lightgbm__comparison",
+      "model": "lightgbm",
+      "feature_set": "comparison",
+      "transform": "none",
+      "role": "confirmatory_model",
+      "research_status": "confirmatory",
+      "status": "complete",
+      "cv_average_precision_mean": 0.011243988031538086,
+      "cv_average_precision_std_ddof1": 0.0018276018723271423,
+      "files": {
+        "fold_metrics.csv": "a511e1393b732fd426b701c516de84a78aeead503b0aae43b5afd58f5eec62af",
+        "oof_predictions.csv": "02db8c1afaaa44e94b7048fafa101f8f916897f6cb76af909658f206d7a0d359",
+        "provenance.json": "db2ada60a282d1edd36c253ce7f8c32969708618d4cd5e5355c266661ce93689",
+        "run_config.json": "06da57a9feda811c3496577c9f8c584e97868b5d204c4cb6b24b0cf30af14415",
+        "summary.json": "ced3d12e7df7c3d3727570046da1201798733eb8b8cddd665bee7b26f09caafd",
+        "warnings.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      }
+    }
+  ],
+  "summary": {
+    "path": "results/runs/2026-10-31_stage8_summary",
+    "files": {
+      "stage9_selection.json": "a4bca8934aeadb17cfbd53fd40d260b24c88c134ba9047817ecd1abfc2a079b3",
+      "summary.csv": "5da58abd1dbdef1db79dbcd7d7cfe01658d1e01bfcc4004917694ccb164b7ec4",
+      "summary.md": "c0597ad5c8d016a6ddd8f423f898c79b4b20b5b94ca332307582621fa9ab9a32"
+    }
+  },
+  "stage9_selection_development_only": {
+    "rule": {
+      "candidates_simplest_first": [
+        "logistic_regression__log1p_asinh",
+        "logistic_regression__yeo_johnson",
+        "random_forest",
+        "lightgbm"
+      ],
+      "rule": "per feature set, the candidate with the highest CV AP mean; exact tie -> the simpler (earlier) candidate; one held-out evaluation per feature set",
+      "never_selected": [
+        "dummy_prior",
+        "stratified_random",
+        "naming_heuristic"
+      ]
+    },
+    "selected": {
+      "main": "logistic_regression__main__yeo_johnson",
+      "comparison": "logistic_regression__comparison__yeo_johnson"
+    },
+    "basis": "development CV AP mean only (rule fixed before the results)",
+    "note": "Recording the selection does not authorize the held-out test evaluation; Stage 9 needs separate approval."
+  },
+  "validation_evidence": {
+    "runtime_enforced": {
+      "description": "Checked by the runner during execution (src/evaluation/cross_validate.py); a failure would have stopped the run and written a __FAILED folder. All 14 runs completed, so these checks passed, but their per-fold details are not stored in the artifacts.",
+      "checks": [
+        "classes_ == [0, 1] before using predict_proba column 1",
+        "predict_proba shape == (n_validation_rows, 2)",
+        "validation probabilities finite and in [0, 1] (metrics.validate_probabilities)",
+        "no ConvergenceWarning (would fail the run); all other warnings recorded",
+        "no project in both training and validation of a fold",
+        "OOF assembled with every development row exactly once, in development order (metrics.assemble_oof, metrics.validate_oof)",
+        "development rows only, counts and folds equal to the split metadata, no held-out project (cross_validate.select_development / load_development_data)",
+        "baseline OOF scores identical for main and comparison (check_baseline_equivalence)"
+      ]
+    },
+    "reconstructable_from_artifacts": {
+      "description": "Independently recomputed from the saved files by a read-only audit (scratchpad stage8_audit.py, not part of the repository); all matched exactly.",
+      "checks": [
+        "6 required files per run; run_config equals the approved matrix entry",
+        "24,967 OOF rows per run; master_row order, keys, project, fold and label equal the split CSV",
+        "no held-out test row or project in any OOF file",
+        "all OOF probabilities finite and in [0, 1]",
+        "per-fold AP and ROC-AUC recomputed with sklearn equal fold_metrics.csv and summary.json (tolerance 1e-12); mean and std (ddof=1) equal",
+        "max-F1 threshold, tie count, optimistic threshold metrics and per-fold threshold diagnostics recomputed from the OOF scores and equal",
+        "baseline OOF files byte-identical between main and comparison",
+        "provenance hashes equal across runs; Stage 9 selection recomputed and equal"
+      ]
+    },
+    "not_preserved": [
+      "the per-fold classes_ values and the probability arrays before validation",
+      "fitted fold models (not stored by design)",
+      "per-run source-file hashes (only the config hash is in provenance; this manifest adds them)"
+    ]
+  },
+  "confirmations": {
+    "held_out_test_evaluated": false,
+    "held_out_test_loaded_by_stage8": false,
+    "hyperparameter_tuning": false,
+    "model_settings": "approved BASE_PARAMS from src/models/pipelines.py, enforced by config validation",
+    "naming_heuristic_status": "exploratory_post_hoc: reported separately, never ranked or selected",
+    "labels_modified": false,
+    "master_or_split_modified": false
+  }
+}

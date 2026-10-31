@@ -1,0 +1,150 @@
+{
+  "addendum_to": {
+    "path": "results/runs/2026-10-31_stage8_freeze_manifest.json",
+    "sha256": "d054c049f604e7408ad486463cfd4379f7b3841563575386c3189c80286cd783"
+  },
+  "created_utc": "2026-10-31T15:37:38+00:00",
+  "purpose": "Checkout-independent identification of the Stage 8 source code. The manifest hashed the working-tree bytes, whose line endings depend on core.autocrlf. Git stores these files with LF endings; sha256_lf_normalized is the SHA-256 of that stored content and git_blob_id its git blob id. Verify with: git ls-tree <commit> <path> (blob id) or sha256 of `git cat-file blob <commit>:<path>`.",
+  "source_files": [
+    {
+      "path": "src/__init__.py",
+      "manifest_sha256_working_tree_bytes": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "working_tree_line_endings": "LF",
+      "sha256_lf_normalized": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_id": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "src/config.py",
+      "manifest_sha256_working_tree_bytes": "7f57d0ae6c97de02729d2c5d2e18b8a03717c78feecb87c253aeab9dbd123ca9",
+      "working_tree_line_endings": "CRLF",
+      "sha256_lf_normalized": "5be7ab67a9ddda821917372f37ed78c476869f2bcbe0b25e6b93e3fd75492601",
+      "git_blob_id": "8dc2e8b870a1ac7095f491e1c672ee6203cabf11"
+    },
+    {
+      "path": "src/data/__init__.py",
+      "manifest_sha256_working_tree_bytes": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "working_tree_line_endings": "LF",
+      "sha256_lf_normalized": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_id": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "src/data/load_master.py",
+      "manifest_sha256_working_tree_bytes": "2270df2fba3c7870ed048f1127437d3f15ee946260e80ee2c64e0a628f7f8609",
+      "working_tree_line_endings": "CRLF",
+      "sha256_lf_normalized": "6c7ec91afd122d175af2e00acfd97d8cf17f48d0f195cc86f5b24f710913e1eb",
+      "git_blob_id": "309b97e4d97a2c990a4ea6aa1b89a4ad6449a315"
+    },
+    {
+      "path": "src/data/prepare_dataset.py",
+      "manifest_sha256_working_tree_bytes": "6bea9bde275e6fdb3b5869976612f3ac01f48ca60644dd034d63724b0f1a50d2",
+      "working_tree_line_endings": "LF",
+      "sha256_lf_normalized": "6bea9bde275e6fdb3b5869976612f3ac01f48ca60644dd034d63724b0f1a50d2",
+      "git_blob_id": "57e4a8cc0b5111108bd35ad5c0f99f8d69b4b65e"
+    },
+    {
+      "path": "src/features/__init__.py",
+      "manifest_sha256_working_tree_bytes": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "working_tree_line_endings": "LF",
+      "sha256_lf_normalized": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_id": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "src/features/feature_sets.py",
+      "manifest_sha256_working_tree_bytes": "5a79aeda2c2f1d4b99fe2a90f33d4c2780abb97c6f8a447f1ee90a078694507c",
+      "working_tree_line_endings": "CRLF",
+      "sha256_lf_normalized": "33009625578c996e5893fae61c2ea1b2a8c4c2eae04cf061ab654f8e6b7d9812",
+      "git_blob_id": "71beef4081dce40e0e3ca1f47f5d1d0bfa3cb6eb"
+    },
+    {
+      "path": "src/features/transform_groups.py",
+      "manifest_sha256_working_tree_bytes": "95b80df5e64d8cfb85fb0a66df134565988b665001e8766ef472b3e93440388a",
+      "working_tree_line_endings": "LF",
+      "sha256_lf_normalized": "95b80df5e64d8cfb85fb0a66df134565988b665001e8766ef472b3e93440388a",
+      "git_blob_id": "4bb6995955710a35f3b78198fa0a2cff4773c19d"
+    },
+    {
+      "path": "src/features/method_features.py",
+      "manifest_sha256_working_tree_bytes": "e04473a3b799b0d551b0a2748504f80fcf7656d6156a106b1a109685c121938e",
+      "working_tree_line_endings": "CRLF",
+      "sha256_lf_normalized": "4fc340e822bba20ca828f3bacd859f324daa6b070b92f25c0d9f6c365ae5b912",
+      "git_blob_id": "d3ec2c25d3ed4e227b598932f2b44c335c0e397d"
+    },
+    {
+      "path": "src/preprocessing/__init__.py",
+      "manifest_sha256_working_tree_bytes": "b3220f9b29088c635a4c8b4ace92fcdf5d446d16a31b1a43694e1d792a9e0a2b",
+      "working_tree_line_endings": "CRLF",
+      "sha256_lf_normalized": "fb621db81d6c4805a371019b0a1d558442dc0c7aa8d6772607ada08eb59775c3",
+      "git_blob_id": "ae244b77ab395b760881ab54cb195912205962c2"
+    },
+    {
+      "path": "src/preprocessing/transforms.py",
+      "manifest_sha256_working_tree_bytes": "36a7362f3e05e7cd38d7623760d42547fa14951c651de2ff64b16784157ac63f",
+      "working_tree_line_endings": "LF",
+      "sha256_lf_normalized": "36a7362f3e05e7cd38d7623760d42547fa14951c651de2ff64b16784157ac63f",
+      "git_blob_id": "0b1c7c0da498853a5223a157735adec37b3aaed9"
+    },
+    {
+      "path": "src/models/__init__.py",
+      "manifest_sha256_working_tree_bytes": "b50a430786dd29e208590104274160ed920f777a4e2b889340bc35227c4ec891",
+      "working_tree_line_endings": "CRLF",
+      "sha256_lf_normalized": "dfe4db64cdfaf85deddb3e8f3765a56567aae89e7770e7ddbf23e0e65302d3d1",
+      "git_blob_id": "11a319697dd2eb6d058036bc5aa177fb24e9b534"
+    },
+    {
+      "path": "src/models/pipelines.py",
+      "manifest_sha256_working_tree_bytes": "486c53bf88842dd93660ad89f58649fb7795d7f01736bf06bbe8174522ffc973",
+      "working_tree_line_endings": "CRLF",
+      "sha256_lf_normalized": "fc82342740dfa2fb4aab1115c11d68d9d23224381c0890e25cc385f9d9c7adbb",
+      "git_blob_id": "729c6e4835a3eb7011fd844b12672f3627899601"
+    },
+    {
+      "path": "src/models/baselines.py",
+      "manifest_sha256_working_tree_bytes": "79b100ee1def9e50d7275eb64dc99d6d97c02f06d9e266c2c1c775d546d4c1a9",
+      "working_tree_line_endings": "CRLF",
+      "sha256_lf_normalized": "c9acd81dd1f418477946a74915fa2d2002922206b99f39dfbb68ae3dbb1a09ef",
+      "git_blob_id": "89afacf4d6f8997efafdf8e063b59b2de69b4bf4"
+    },
+    {
+      "path": "src/evaluation/__init__.py",
+      "manifest_sha256_working_tree_bytes": "a72c1c89224cd450de896e8d7d55da5b7678e771125ff363dc20124652a2cbad",
+      "working_tree_line_endings": "LF",
+      "sha256_lf_normalized": "a72c1c89224cd450de896e8d7d55da5b7678e771125ff363dc20124652a2cbad",
+      "git_blob_id": "fb9993c39f0c310838afac9fd1c2e4ffa6d2b36a"
+    },
+    {
+      "path": "src/evaluation/splits.py",
+      "manifest_sha256_working_tree_bytes": "30a93e59e5f8d11616d7075072f21581c75932593f7dd51fa3a1f419a44f2448",
+      "working_tree_line_endings": "LF",
+      "sha256_lf_normalized": "30a93e59e5f8d11616d7075072f21581c75932593f7dd51fa3a1f419a44f2448",
+      "git_blob_id": "2244ed3b163095057e8662edb9333e49fdabe439"
+    },
+    {
+      "path": "src/evaluation/metrics.py",
+      "manifest_sha256_working_tree_bytes": "57c0078aed93d60523bd61bcc34fba580e4c7bd4e5fa55b499fb2f8b8d7d523e",
+      "working_tree_line_endings": "LF",
+      "sha256_lf_normalized": "57c0078aed93d60523bd61bcc34fba580e4c7bd4e5fa55b499fb2f8b8d7d523e",
+      "git_blob_id": "8a8e04da6ee07e78edb0b7643a1486cf2772fe80"
+    },
+    {
+      "path": "src/evaluation/cross_validate.py",
+      "manifest_sha256_working_tree_bytes": "c3aa3393fedb63c412330b9c5089cd69dd232c488baf2a18df452b8806b3a3fb",
+      "working_tree_line_endings": "LF",
+      "sha256_lf_normalized": "c3aa3393fedb63c412330b9c5089cd69dd232c488baf2a18df452b8806b3a3fb",
+      "git_blob_id": "423bcdd45fb1a35ab02d81127ef30f20ffefc3ff"
+    },
+    {
+      "path": "src/evaluation/run_store.py",
+      "manifest_sha256_working_tree_bytes": "66070c9e3b0f79d7016359840d1adf1196c49b9dbdd2a407a19fdd108a77b186",
+      "working_tree_line_endings": "LF",
+      "sha256_lf_normalized": "66070c9e3b0f79d7016359840d1adf1196c49b9dbdd2a407a19fdd108a77b186",
+      "git_blob_id": "e044ff351cad079a5bed17741579d8a25eec6f7d"
+    },
+    {
+      "path": "src/evaluation/run_stage8.py",
+      "manifest_sha256_working_tree_bytes": "a4554fa95815f72b4b2405c1db4884ad2688d0bb8041ac09c967f45bf6ff150a",
+      "working_tree_line_endings": "CRLF",
+      "sha256_lf_normalized": "5e4112ebfb34052fb125e061f3359fde041837816e30e76542629b69e625f7cc",
+      "git_blob_id": "90554909dcf85f29bc6eb73c41fb23c7cde39514"
+    }
+  ]
+}

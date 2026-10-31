@@ -1,0 +1,257 @@
+{
+  "name": "stage8_development_cv",
+  "stage": 8,
+  "description": "Development cross-validation on the 5 saved grouped folds (development rows only). Fixed matrix; approved settings; no tuning.",
+  "dataset_sha256": "e6a8fd476feb87406846327093f9d8157a1238e7bd6f9fb7a50b60e659b8a8f0",
+  "split_hash": "16b4fac620af776ab3b018187b4a67e4c1be27f9d009a7acbab2ef6a8039f14c",
+  "primary_metric": "average_precision",
+  "primary_feature_set": "main",
+  "cv_result": "mean and sample std (ddof=1) of the 5 validation-fold APs",
+  "threshold_rule": "max F1 on pooled development OOF scores; lowest threshold on ties; development threshold metrics are optimistic",
+  "warning_policy": {
+    "ConvergenceWarning": "fail_run",
+    "other_warnings": "record",
+    "non_finite_transform": "fail_run"
+  },
+  "stage9_selection_rule": {
+    "candidates_simplest_first": [
+      "logistic_regression__log1p_asinh",
+      "logistic_regression__yeo_johnson",
+      "random_forest",
+      "lightgbm"
+    ],
+    "rule": "per feature set, the candidate with the highest CV AP mean; exact tie -> the simpler (earlier) candidate; one held-out evaluation per feature set",
+    "never_selected": [
+      "dummy_prior",
+      "stratified_random",
+      "naming_heuristic"
+    ]
+  },
+  "runs": [
+    {
+      "run_id": "dummy_prior__main",
+      "model": "dummy_prior",
+      "feature_set": "main",
+      "transform": "none",
+      "model_params": {
+        "strategy": "prior"
+      },
+      "role": "chance_reference",
+      "research_status": "reference"
+    },
+    {
+      "run_id": "dummy_prior__comparison",
+      "model": "dummy_prior",
+      "feature_set": "comparison",
+      "transform": "none",
+      "model_params": {
+        "strategy": "prior"
+      },
+      "role": "chance_reference",
+      "research_status": "reference"
+    },
+    {
+      "run_id": "stratified_random__main",
+      "model": "stratified_random",
+      "feature_set": "main",
+      "transform": "none",
+      "model_params": {
+        "random_state": 42
+      },
+      "role": "chance_reference",
+      "research_status": "reference"
+    },
+    {
+      "run_id": "stratified_random__comparison",
+      "model": "stratified_random",
+      "feature_set": "comparison",
+      "transform": "none",
+      "model_params": {
+        "random_state": 42
+      },
+      "role": "chance_reference",
+      "research_status": "reference"
+    },
+    {
+      "run_id": "naming_heuristic__main",
+      "model": "naming_heuristic",
+      "feature_set": "main",
+      "transform": "none",
+      "model_params": {},
+      "role": "exploratory_heuristic",
+      "research_status": "exploratory_post_hoc"
+    },
+    {
+      "run_id": "naming_heuristic__comparison",
+      "model": "naming_heuristic",
+      "feature_set": "comparison",
+      "transform": "none",
+      "model_params": {},
+      "role": "exploratory_heuristic",
+      "research_status": "exploratory_post_hoc"
+    },
+    {
+      "run_id": "logistic_regression__main__log1p_asinh",
+      "model": "logistic_regression",
+      "feature_set": "main",
+      "transform": "log1p_asinh",
+      "model_params": {
+        "C": 1.0,
+        "l1_ratio": 0.0,
+        "solver": "lbfgs",
+        "max_iter": 5000,
+        "class_weight": "balanced",
+        "random_state": 42
+      },
+      "role": "confirmatory_model",
+      "research_status": "confirmatory"
+    },
+    {
+      "run_id": "logistic_regression__comparison__log1p_asinh",
+      "model": "logistic_regression",
+      "feature_set": "comparison",
+      "transform": "log1p_asinh",
+      "model_params": {
+        "C": 1.0,
+        "l1_ratio": 0.0,
+        "solver": "lbfgs",
+        "max_iter": 5000,
+        "class_weight": "balanced",
+        "random_state": 42
+      },
+      "role": "confirmatory_model",
+      "research_status": "confirmatory"
+    },
+    {
+      "run_id": "logistic_regression__main__yeo_johnson",
+      "model": "logistic_regression",
+      "feature_set": "main",
+      "transform": "yeo_johnson",
+      "model_params": {
+        "C": 1.0,
+        "l1_ratio": 0.0,
+        "solver": "lbfgs",
+        "max_iter": 5000,
+        "class_weight": "balanced",
+        "random_state": 42
+      },
+      "role": "confirmatory_model_transform_experiment",
+      "research_status": "confirmatory"
+    },
+    {
+      "run_id": "logistic_regression__comparison__yeo_johnson",
+      "model": "logistic_regression",
+      "feature_set": "comparison",
+      "transform": "yeo_johnson",
+      "model_params": {
+        "C": 1.0,
+        "l1_ratio": 0.0,
+        "solver": "lbfgs",
+        "max_iter": 5000,
+        "class_weight": "balanced",
+        "random_state": 42
+      },
+      "role": "confirmatory_model_transform_experiment",
+      "research_status": "confirmatory"
+    },
+    {
+      "run_id": "random_forest__main",
+      "model": "random_forest",
+      "feature_set": "main",
+      "transform": "none",
+      "model_params": {
+        "n_estimators": 500,
+        "max_features": "sqrt",
+        "min_samples_leaf": 1,
+        "class_weight": "balanced",
+        "random_state": 42,
+        "n_jobs": -1
+      },
+      "role": "confirmatory_model",
+      "research_status": "confirmatory"
+    },
+    {
+      "run_id": "random_forest__comparison",
+      "model": "random_forest",
+      "feature_set": "comparison",
+      "transform": "none",
+      "model_params": {
+        "n_estimators": 500,
+        "max_features": "sqrt",
+        "min_samples_leaf": 1,
+        "class_weight": "balanced",
+        "random_state": 42,
+        "n_jobs": -1
+      },
+      "role": "confirmatory_model",
+      "research_status": "confirmatory"
+    },
+    {
+      "run_id": "lightgbm__main",
+      "model": "lightgbm",
+      "feature_set": "main",
+      "transform": "none",
+      "model_params": {
+        "n_estimators": 300,
+        "learning_rate": 0.05,
+        "num_leaves": 31,
+        "min_child_samples": 20,
+        "random_state": 42,
+        "n_jobs": 1,
+        "deterministic": true
+      },
+      "role": "confirmatory_model",
+      "research_status": "confirmatory"
+    },
+    {
+      "run_id": "lightgbm__comparison",
+      "model": "lightgbm",
+      "feature_set": "comparison",
+      "transform": "none",
+      "model_params": {
+        "n_estimators": 300,
+        "learning_rate": 0.05,
+        "num_leaves": 31,
+        "min_child_samples": 20,
+        "random_state": 42,
+        "n_jobs": 1,
+        "deterministic": true
+      },
+      "role": "confirmatory_model",
+      "research_status": "confirmatory"
+    }
+  ],
+  "optional_experiments": {
+    "stratified_random_seed_spread": {
+      "purpose": "Chance-level spread: the stratified-random baseline with 20 other seeds, to show how much AP varies by chance alone. Not part of the primary matrix; never used for model selection.",
+      "run_by_default": false,
+      "model": "stratified_random",
+      "feature_set": "main",
+      "transform": "none",
+      "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "role": "chance_spread",
+      "research_status": "reference"
+    }
+  }
+}

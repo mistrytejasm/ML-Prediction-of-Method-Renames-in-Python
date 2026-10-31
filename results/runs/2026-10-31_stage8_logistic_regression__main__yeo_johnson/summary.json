@@ -1,0 +1,62 @@
+{
+  "run_id": "logistic_regression__main__yeo_johnson",
+  "model": "logistic_regression",
+  "feature_set": "main",
+  "transform": "yeo_johnson",
+  "role": "confirmatory_model_transform_experiment",
+  "research_status": "confirmatory",
+  "primary_metric": "average_precision",
+  "cv_average_precision": {
+    "mean": 0.013270931619669768,
+    "std": 0.0034514713200503367,
+    "std_ddof": 1,
+    "per_fold": [
+      0.0173167744658412,
+      0.011815657351590163,
+      0.01662973834793223,
+      0.010600245327935817,
+      0.009992242605049434
+    ],
+    "n_folds": 5,
+    "definition": "arithmetic mean and sample std of the 5 validation-fold APs"
+  },
+  "cv_roc_auc_per_fold": [
+    0.6935625104536643,
+    0.5529981829194428,
+    0.706390066626287,
+    0.6058416630450529,
+    0.5977424740040809
+  ],
+  "threshold_selection": {
+    "objective": "max_f1",
+    "threshold": 0.859356439967941,
+    "n_tied_max_f1": 1,
+    "n_candidates": 23276,
+    "data": "pooled development OOF scores"
+  },
+  "development_threshold_metrics": {
+    "note": "optimistic: measured on the same pooled development OOF scores that were used to select the threshold; not a performance estimate",
+    "precision": 0.020637898686679174,
+    "recall": 0.05699481865284974,
+    "f1": 0.030303030303030304,
+    "mcc": 0.02176730429524299,
+    "tp": 11,
+    "fp": 522,
+    "fn": 182,
+    "tn": 24252
+  },
+  "fold_threshold_diagnostics": {
+    "per_fold": [
+      0.8642310896347389,
+      0.859356439967941,
+      0.7618280360130363,
+      0.5430427669409654,
+      0.6838488462178473
+    ],
+    "min": 0.5430427669409654,
+    "max": 0.8642310896347389,
+    "range": 0.3211883226937735,
+    "note": "diagnostic only; never used to select the threshold"
+  },
+  "n_warnings": 0
+}

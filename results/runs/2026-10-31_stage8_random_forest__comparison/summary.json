@@ -1,0 +1,62 @@
+{
+  "run_id": "random_forest__comparison",
+  "model": "random_forest",
+  "feature_set": "comparison",
+  "transform": "none",
+  "role": "confirmatory_model",
+  "research_status": "confirmatory",
+  "primary_metric": "average_precision",
+  "cv_average_precision": {
+    "mean": 0.013512204446983717,
+    "std": 0.004036937173174561,
+    "std_ddof": 1,
+    "per_fold": [
+      0.01342348972816338,
+      0.01054924137652873,
+      0.015348922905429963,
+      0.00900652321530937,
+      0.019232845009487135
+    ],
+    "n_folds": 5,
+    "definition": "arithmetic mean and sample std of the 5 validation-fold APs"
+  },
+  "cv_roc_auc_per_fold": [
+    0.6769916075522192,
+    0.5599211535804989,
+    0.5384774777646721,
+    0.5145278450363195,
+    0.6781225108839158
+  ],
+  "threshold_selection": {
+    "objective": "max_f1",
+    "threshold": 0.064,
+    "n_tied_max_f1": 1,
+    "n_candidates": 1825,
+    "data": "pooled development OOF scores"
+  },
+  "development_threshold_metrics": {
+    "note": "optimistic: measured on the same pooled development OOF scores that were used to select the threshold; not a performance estimate",
+    "precision": 0.015272727272727273,
+    "recall": 0.10880829015544041,
+    "f1": 0.026785714285714284,
+    "mcc": 0.020790995090429976,
+    "tp": 21,
+    "fp": 1354,
+    "fn": 172,
+    "tn": 23420
+  },
+  "fold_threshold_diagnostics": {
+    "per_fold": [
+      0.024,
+      0.09592405063291139,
+      0.206,
+      0.064,
+      0.258
+    ],
+    "min": 0.024,
+    "max": 0.258,
+    "range": 0.234,
+    "note": "diagnostic only; never used to select the threshold"
+  },
+  "n_warnings": 0
+}

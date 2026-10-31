@@ -1,8 +1,8 @@
 # Experiment protocol
 
-The rules every preprocessing, training and evaluation step in this project follows. Decisions marked **Approved** were
-agreed on 2026-10-31; items marked **Proposed** are suggestions for phase 1 and still need approval. Nothing here has
-been run yet.
+The rules every preprocessing, training and evaluation step in this project follows. Decisions marked **Approved** are agreed;
+items marked **Proposed** still need approval. What has and has not been executed is listed in section 8: no model has
+been trained on real data yet.
 
 ## 1. Data: one canonical, read-only source
 
@@ -23,6 +23,8 @@ columns.
 | Main | `configs/experiments/main_40.json` | `MAIN_FEATURES` (40) |
 | Comparison | `configs/experiments/comparison_42.json` | `COMPARISON_FEATURES` (42) = main + `file_loc`, `file_n_methods` |
 
+Main 40 is the primary research configuration; comparison 42 is the secondary feature-set comparison (Approved).
+
 Never used as model inputs: `call_sites`, `rel_call_sites` (temporal leakage, `docs/temporal_leakage_audit.md`),
 `class_depth`, `is_async` (dropped), identifiers (`commit`, `file`, `class`, `name`), the target and every `meta_*`
 column. `validate_feature_set()` rejects all of them.
@@ -40,9 +42,9 @@ X, y, groups = select_xy_groups(df, "main")            # 40 features; "compariso
 | Split by `meta_project_group` (323 groups) so no repository appears on both sides | Approved |
 | Every learned step (scaling, log-transform parameters, resampling, feature selection, threshold) is fitted on training data only and then applied to validation/test data | Approved |
 | No resampling (SMOTE, undersampling) or scaling of the whole dataset before splitting | Approved |
-| Hold out about 20% of project groups as a final test set, stratified so it contains positives; tune only on the rest | Proposed |
-| `StratifiedGroupKFold(n_splits=5, shuffle=True, random_state=42)` on the remaining groups | Proposed |
-| Report the number of positives and groups in every fold (only 79 groups contain positives) | Proposed |
+| Held-out test set: fold 0 of `StratifiedGroupKFold(n_splits=5, shuffle=True, random_state=42)` on all rows: 62 projects, 6,242 rows, 50 positives (`data/processed/splits/project_split_seed42.*`). Its acceptance criteria (>= 40 positives, >= 10 positive projects) are audit-informed, set after the counts were known, not prespecified. Nothing is tuned or selected on it | Approved |
+| Development folds: the same splitter on the 261 development projects (24,967 rows, 193 positives); saved and reused by every experiment | Approved |
+| Report the number of rows, positives and groups in every fold (only 79 groups contain positives) | Approved |
 
 ## 4. Metrics
 
@@ -52,15 +54,21 @@ X, y, groups = select_xy_groups(df, "main")            # 40 features; "compariso
 | Also report precision, recall, F1 and MCC at a threshold chosen on validation data, and ROC-AUC (threshold-independent, from predicted probabilities, like AP) as a supplement | Approved |
 | Never report accuracy alone (always predicting "not renamed" scores 99.2%) | Approved |
 | Report mean ± sample standard deviation (ddof=1) over the 5 validation folds | Approved |
+| Development CV AP = that mean and std of the 5 validation-fold APs; the AP of pooled OOF scores is not the CV result and is not reported | Approved |
+| Decision threshold: maximum F1 on pooled development out-of-fold scores (lowest threshold on ties); never chosen on test data | Approved |
+| Precision, recall, F1 and MCC measured on those same OOF scores are labelled optimistic (the threshold was chosen on them) | Approved |
 
 ## 5. Comparisons to report
 
 | Comparison | Status |
 |---|---|
 | Main (40) vs comparison (42): how much of the score comes from file size | Approved |
-| Baselines: majority class, stratified random, simple bad-name rule | Proposed |
-| Sensitivity: results without the 60 visibility-only / case-only renames | Proposed |
-| Sensitivity: results without the 76 AI-reviewed (unconfirmed) positives | Proposed |
+| Chance references: `dummy_prior` (DummyClassifier, prior) and `stratified_random` (seed 42) | Approved |
+| `naming_heuristic`: exploratory, post-hoc rule (`docs/naming_heuristic.md`), reported separately, never a confirmatory model | Approved |
+| Logistic Regression with Yeo-Johnson: a separate run in `configs/runs/stage8_development_cv.json`, next to the primary `log1p_asinh` | Approved |
+| Stage 9 selection, fixed before any result: per feature set, the highest CV AP mean among Logistic Regression (`log1p_asinh`, `yeo_johnson`), Random Forest and LightGBM; exact tie -> the simpler model (in that order); one held-out evaluation per feature set; the naming heuristic is never selected | Approved |
+| Sensitivity: results without the 60 visibility-only / case-only renames (deferred to Stage 8b) | Proposed |
+| Sensitivity: results without the 76 AI-reviewed (unconfirmed) positives (deferred to Stage 8b; labels are not changed) | Proposed |
 
 ## 6. Recording results
 
@@ -68,10 +76,26 @@ X, y, groups = select_xy_groups(df, "main")            # 40 features; "compariso
 |---|---|
 | One folder per run: `results/runs/<YYYY-MM-DD>_<config name>/` with metrics, per-fold scores and a copy of the config | Approved |
 | `results/legacy_experiments/` is historical and is never overwritten | Approved |
-| Runs record the package versions from `requirements-lock.txt` and the master checksum | Proposed |
+| Runs record the git commit (and whether the working tree was dirty), Python and package versions, the `requirements-lock.txt` SHA-256, the master checksum, the split hash and the split-file checksum | Approved |
+| Run folders are written once (temporary folder, then rename) and never overwritten; a failed run is recorded as `<name>__FAILED`; fitted models are not stored | Approved |
+| A `ConvergenceWarning` fails the run (approved settings are never changed to force convergence); all other warnings are recorded with their fold; non-finite transformed values fail the run | Approved |
 
 ## 7. Scope and known limits (state with every result)
 
 - Methods belonging to files edited by the future commit (ActRef stores only changed files).
 - About 9.5% of eligible methods (3,263) with an unknown outcome are excluded; both Before and After files must parse.
 - 76 of the 243 positives are AI-reviewed and not yet confirmed by a person.
+
+## 8. Execution status
+
+| Stage | Status |
+|---|---|
+| 1-6: dataset preparation, transform groups, saved split, preprocessing, model pipelines, metrics | Implemented and merged |
+| 7: `stratified_random` baseline, exploratory `naming_heuristic` | Implemented and merged |
+| 8: development cross-validation infrastructure (`src/evaluation/cross_validate.py`, `run_store.py`, `run_stage8.py`, `configs/runs/stage8_development_cv.json`) | Implemented; tested on synthetic data only |
+| 8: real-data dry run (`--dry-run`) | Not executed; needs approval |
+| 8: real-data development cross-validation (14-run matrix) | Not executed; needs approval |
+| 8b: sensitivity runs; optional 20-seed random-baseline spread | Not executed |
+| 9: refit on development data, one held-out evaluation per feature set | Not started |
+
+How to run Stage 8 and read its outputs: `docs/stage8_execution_guide.md`.

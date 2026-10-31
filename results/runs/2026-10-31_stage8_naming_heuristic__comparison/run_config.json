@@ -1,0 +1,9 @@
+{
+  "run_id": "naming_heuristic__comparison",
+  "model": "naming_heuristic",
+  "feature_set": "comparison",
+  "transform": "none",
+  "model_params": {},
+  "role": "exploratory_heuristic",
+  "research_status": "exploratory_post_hoc"
+}
