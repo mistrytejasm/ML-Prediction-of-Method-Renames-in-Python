@@ -59,10 +59,9 @@ FEATURE_INFO = {
     "is_static_or_class": ("@staticmethod or @classmethod", "decorator text match", ""),
     "name_body_overlap": ("Share of the name's words that appear in identifiers of the body",
                           "name tokens found among body Name/Attribute/arg tokens / name tokens", ""),
-    "in_class": ("Method is inside a class", "class path is not empty",
-                 "Nearly identical to class_depth > 0 (r = 0.997)"),
-    "class_depth": ("Class nesting depth (0 = module function)", "depth while visiting ClassDef nodes",
-                    "Nearly identical to in_class"),
+    # in_class / class_depth notes are computed from the master in main() (near_dup)
+    "in_class": ("Method is inside a class", "class path is not empty", ""),
+    "class_depth": ("Class nesting depth (0 = module function)", "depth while visiting ClassDef nodes", ""),
     "class_n_methods": ("Methods in the same class", "functions directly in the class (0 for module functions)", ""),
     "file_n_methods": ("Methods in the Before file", "len(collect(Before tree))",
                        "Showed sampling bias in v1; test with and without"),
@@ -72,6 +71,7 @@ FEATURE_INFO = {
     "style_mismatch": ("camelCase name in a mostly snake_case file", "camel and snake share of the file > 0.5", "Rare"),
     "call_sites": ("Times the name is called in the commit's Before files",
                    "regex r'\\bname\\s*\\(' over all parseable Before files of the commit, minus 1",
+                   "Excluded: search scope depends on the future commit's changed-file list. "
                    "Only files changed by the commit are searched, so this is a partial count. "
                    "Recomputed Before-only (v2 skipped Before files without an After pair)"),
     "name_token_sharing": ("Share of the name's words used by other methods in the file",
@@ -81,10 +81,51 @@ FEATURE_INFO = {
 }
 for col in ["name_len", "name_tokens", "loc", "n_params", "n_calls", "cyclomatic", "doc_len", "call_sites",
             "name_body_overlap"]:
+    rel_note = ("Recomputed Before-only (v2 averaged only over methods whose label was known, "
+                "which depended on the After code)")
+    if col == "call_sites":
+        rel_note = "Excluded: inherits the commit-scope dependence of call_sites. " + rel_note
+    else:
+        rel_note += ". Passed the Before-only recomputation audit (0 mismatches)"
     FEATURE_INFO["rel_" + col] = (
         f"{col} minus the average {col} of the eligible methods in the same Before file",
         f"{col} - mean({col}) over non-dunder, non-test Before methods of the file",
-        "Recomputed Before-only (v2 averaged only over methods whose label was known, which depended on the After code)")
+        rel_note)
+
+# ---- Approved experimental training configurations (approved 2026-10-31).
+# The 46-feature master dataset is not changed; these lists only select columns for training.
+EXCLUDED_LEAKAGE = ["call_sites", "rel_call_sites"]   # search scope = the future commit's changed files
+DROPPED = ["class_depth", "is_async"]                 # near-duplicate of in_class / near-constant
+COMPARISON_ONLY = ["file_loc", "file_n_methods"]      # file size: comparison experiment only
+COMPARISON_FEATURES = [f for f in config.FEATURES if f not in EXCLUDED_LEAKAGE + DROPPED]
+MAIN_FEATURES = [f for f in COMPARISON_FEATURES if f not in COMPARISON_ONLY]
+LEAKY_BEFORE_ONLY = "Before text, but only of the files the future commit changed"
+
+
+def check_configurations():
+    """Fail loudly if a configuration ever includes a feature it must not."""
+    for name, feats in (("main", MAIN_FEATURES), ("comparison", COMPARISON_FEATURES)):
+        bad = set(feats) & set(EXCLUDED_LEAKAGE + DROPPED)
+        if bad:
+            raise SystemExit(f"{name} configuration includes excluded or dropped features: {sorted(bad)}")
+    if set(MAIN_FEATURES) & set(COMPARISON_ONLY):
+        raise SystemExit("file_loc / file_n_methods must not be main features")
+    if set(COMPARISON_FEATURES) - set(MAIN_FEATURES) != set(COMPARISON_ONLY):
+        raise SystemExit("comparison must equal main + file_loc + file_n_methods")
+    if (len(MAIN_FEATURES), len(COMPARISON_FEATURES)) != (40, 42):
+        raise SystemExit(f"expected 40 / 42 features, got {len(MAIN_FEATURES)} / {len(COMPARISON_FEATURES)}")
+
+
+def use_in_model(f, async_rows, async_renamed, equal_pct, pearson):
+    if f in EXCLUDED_LEAKAGE:
+        return "no: excluded from both experiments (temporal leakage)"
+    if f == "class_depth":
+        return f"no: dropped (near-duplicate of in_class, {equal_pct} equal; Pearson r = {pearson})"
+    if f == "is_async":
+        return f"no: dropped (near-constant: {async_rows} methods, {async_renamed} renamed)"
+    if f in COMPARISON_ONLY:
+        return "comparison experiment only"
+    return "main + comparison"
 
 ID_INFO = {
     "commit": "ActRef commit folder name (40-character hash)",
@@ -184,6 +225,13 @@ def main(argv=None):
     pairs.to_csv(out / "feature_correlations.csv", index=False)
 
     # ------------------------------------------------ data dictionary
+    check_configurations()
+    equal_pct = f"{(m['class_depth'] == m['in_class']).mean():.4%}"
+    pearson = f"{m['class_depth'].corr(m['in_class']):.6f}"
+    near_dup = {"class_depth": f"Near-duplicate of in_class ({equal_pct} equal; Pearson r = {pearson})",
+                "in_class": f"Near-duplicate of class_depth ({equal_pct} equal; Pearson r = {pearson})"}
+    async_rows = int((m["is_async"] != 0).sum())
+    async_renamed = int(m.loc[m["is_async"] != 0, config.TARGET].sum())
     dd = []
     for c in m.columns:
         if c in ID_INFO:
@@ -196,8 +244,11 @@ def main(argv=None):
             meaning, calc, note = FEATURE_INFO[c]
             g = stats.loc[c, "group"]
             dd.append({"column": c, "role": "feature", "group": g, "dtype": str(m[c].dtype), "meaning": meaning,
-                       "calculation": calc, "before_only": "yes", "missing_possible": "no",
-                       "use_in_model": "yes", "notes": note})
+                       "calculation": calc,
+                       "before_only": LEAKY_BEFORE_ONLY if c in EXCLUDED_LEAKAGE else "yes",
+                       "missing_possible": "no",
+                       "use_in_model": use_in_model(c, async_rows, async_renamed, equal_pct, pearson),
+                       "notes": near_dup.get(c, note)})
         else:
             dd.append({"column": c, "role": "metadata", "group": "", "dtype": str(m[c].dtype),
                        "meaning": META_INFO.get(c, ""), "calculation": "", "before_only":
@@ -211,13 +262,46 @@ def main(argv=None):
         "# Data dictionary: actref_master_dataset.csv", "",
         f"Generated by `src/data/generate_dataset_report.py` on {date.today().isoformat()} from "
         f"`data/processed/master/actref_master_dataset.csv` ({schema['rows']:,} rows, {schema['columns']} columns).", "",
-        "Roles: **identifier** (never a model input), **target** (`renamed`), **feature** (46 model inputs, all "
-        "computed from the Before code only), **metadata** (`meta_*`, labelling provenance, never a model input).", "",
-        "Select model inputs with the schema file, not by dropping columns by hand:", "",
+        f"Roles: **identifier** (never a model input), **target** (`renamed`), **feature** ({len(config.FEATURES)} "
+        "audited predictive features, all computed from Before code), **metadata** (`meta_*`, labelling provenance, "
+        "never a model input).", "",
+        "## Master dataset and training configurations", "",
+        f"The {len(config.FEATURES)}-feature master dataset is **unchanged** and remains the canonical, audited source "
+        "dataset. The approved training configurations select columns from it; they are experimental settings, not "
+        "changes to the master:", "",
+        "| Configuration | Features | Definition |",
+        "|---|---|---|",
+        f"| Main experiment | **{len(MAIN_FEATURES)}** | {len(config.FEATURES)} minus "
+        + ", ".join(f"`{f}`" for f in EXCLUDED_LEAKAGE + DROPPED + COMPARISON_ONLY) + " |",
+        f"| Comparison experiment | **{len(COMPARISON_FEATURES)}** | Main + "
+        + ", ".join(f"`{f}`" for f in COMPARISON_ONLY) + " |", "",
+        "| Not used in either experiment | Reason |",
+        "|---|---|",
+        "| `call_sites` | Excluded: its search scope is every Before file the future commit changed, so it depends on "
+        "the commit's changed-file list (`docs/temporal_leakage_audit.md`) |",
+        "| `rel_call_sites` | Excluded: built from `call_sites`, so it inherits the same dependence |",
+        f"| `class_depth` | Dropped: near-duplicate of `in_class` ({equal_pct} equal; Pearson r = {pearson}) |",
+        f"| `is_async` | Dropped: near-constant ({async_rows} methods, "
+        f"{'none' if async_renamed == 0 else async_renamed} renamed) |", "",
+        "The other eight `rel_*` features passed the Before-only recomputation audit: 33,232 values recomputed from "
+        "the Before file alone, 0 mismatches.", "",
+        "**Research scope and data conditions**", "",
+        "- The scope is methods belonging to files edited by the future commit (ActRef stores only changed files).",
+        "- About 9.5% of eligible methods (3,263) have an unknown outcome (deleted, moved, or renamed undetected) and "
+        "are excluded.",
+        "- A file supplies rows only if both its Before and After versions parse.", "",
+        "**Future work (not implemented, not approved):** an own-file-only call count as a replacement for "
+        "`call_sites`, counting calls only inside the method's own Before file. It is not in the master dataset or "
+        "the feature code.", "",
+        "Select model inputs with the schema file, then apply the configuration:", "",
         "```python", "import json, pandas as pd",
         "schema = json.load(open('data/processed/master/actref_master_dataset_schema.json'))",
         "df = pd.read_csv('data/processed/master/actref_master_dataset.csv', keep_default_na=False)",
-        "X, y, groups = df[schema['roles']['feature']], df['renamed'], df['meta_project_group']", "```", "",
+        "X_all = df[schema['roles']['feature']]                                        # 46 audited features",
+        "X_comparison = X_all.drop(columns=['call_sites', 'rel_call_sites', 'class_depth', 'is_async'])   # 42",
+        "X_main = X_comparison.drop(columns=['file_loc', 'file_n_methods'])                                # 40",
+        "y, groups = df['renamed'], df['meta_project_group']",
+        "```", "",
     ]
     for role, title in (("identifier", "Identifiers"), ("target", "Target"), ("feature", "Features"),
                         ("metadata", "Metadata (not for training)")):
