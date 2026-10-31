@@ -1,0 +1,173 @@
+{
+  "name": "project_split_seed42",
+  "created": "2026-10-31",
+  "created_by": "src/evaluation/splits.py",
+  "dataset": "data/processed/master/actref_master_dataset.csv",
+  "dataset_sha256": "e6a8fd476feb87406846327093f9d8157a1238e7bd6f9fb7a50b60e659b8a8f0",
+  "feature_sets": {
+    "main": 40,
+    "comparison": 42
+  },
+  "feature_sets_note": "the splitters read only y and groups; every feature set uses these partitions",
+  "group_column": "meta_project_group",
+  "target": "renamed",
+  "row_key": [
+    "commit",
+    "file",
+    "class",
+    "name"
+  ],
+  "outer_split": {
+    "name": "StratifiedGroupKFold",
+    "n_splits": 5,
+    "shuffle": true,
+    "random_state": 42,
+    "test_fold": 0,
+    "split_on": "all master rows, master order"
+  },
+  "inner_split": {
+    "name": "StratifiedGroupKFold",
+    "n_splits": 5,
+    "shuffle": true,
+    "random_state": 42,
+    "split_on": "development rows only, master order"
+  },
+  "acceptance_criteria": {
+    "min_test_positives": 40,
+    "min_test_positive_projects": 10,
+    "status": "audit-informed, set after the Phase 1 preprocessing audit and after the split counts were known; not prespecified or preregistered",
+    "passed": true
+  },
+  "assignment_file": "project_split_seed42.csv",
+  "assignment_columns": [
+    "master_row",
+    "commit",
+    "file",
+    "class",
+    "name",
+    "meta_project_group",
+    "renamed",
+    "partition",
+    "inner_fold"
+  ],
+  "inner_fold_for_test_rows": -1,
+  "split_hash": "16b4fac620af776ab3b018187b4a67e4c1be27f9d009a7acbab2ef6a8039f14c",
+  "split_hash_definition": "sha256 of 'commit\\tfile\\tclass\\tname\\tpartition\\tinner_fold' lines in master order joined with '\\n'",
+  "versions": {
+    "python": "3.12.0",
+    "scikit-learn": "1.9.1",
+    "numpy": "2.5.4",
+    "pandas": "3.1.0"
+  },
+  "counts": {
+    "all": {
+      "rows": 31209,
+      "projects": 323,
+      "positives": 243,
+      "negatives": 30966,
+      "positive_projects": 79
+    },
+    "test": {
+      "rows": 6242,
+      "projects": 62,
+      "positives": 50,
+      "negatives": 6192,
+      "positive_projects": 12
+    },
+    "development": {
+      "rows": 24967,
+      "projects": 261,
+      "positives": 193,
+      "negatives": 24774,
+      "positive_projects": 67
+    },
+    "inner_folds": [
+      {
+        "fold": 0,
+        "validation": {
+          "rows": 4999,
+          "projects": 50,
+          "positives": 41,
+          "negatives": 4958,
+          "positive_projects": 13
+        },
+        "training": {
+          "rows": 19968,
+          "projects": 211,
+          "positives": 152,
+          "negatives": 19816,
+          "positive_projects": 54
+        }
+      },
+      {
+        "fold": 1,
+        "validation": {
+          "rows": 4991,
+          "projects": 54,
+          "positives": 38,
+          "negatives": 4953,
+          "positive_projects": 13
+        },
+        "training": {
+          "rows": 19976,
+          "projects": 207,
+          "positives": 155,
+          "negatives": 19821,
+          "positive_projects": 54
+        }
+      },
+      {
+        "fold": 2,
+        "validation": {
+          "rows": 4991,
+          "projects": 53,
+          "positives": 38,
+          "negatives": 4953,
+          "positive_projects": 12
+        },
+        "training": {
+          "rows": 19976,
+          "projects": 208,
+          "positives": 155,
+          "negatives": 19821,
+          "positive_projects": 55
+        }
+      },
+      {
+        "fold": 3,
+        "validation": {
+          "rows": 4995,
+          "projects": 52,
+          "positives": 39,
+          "negatives": 4956,
+          "positive_projects": 13
+        },
+        "training": {
+          "rows": 19972,
+          "projects": 209,
+          "positives": 154,
+          "negatives": 19818,
+          "positive_projects": 54
+        }
+      },
+      {
+        "fold": 4,
+        "validation": {
+          "rows": 4991,
+          "projects": 52,
+          "positives": 37,
+          "negatives": 4954,
+          "positive_projects": 16
+        },
+        "training": {
+          "rows": 19976,
+          "projects": 209,
+          "positives": 156,
+          "negatives": 19820,
+          "positive_projects": 51
+        }
+      }
+    ]
+  },
+  "assignment_file_sha256": "00644a426bf1d835c76101dd3aab4fe6613228ecc0888fd8913881122df7f7d1"
+}

@@ -48,10 +48,10 @@ X, y, groups = select_xy_groups(df, "main")            # 40 features; "compariso
 
 | Rule | Status |
 |---|---|
-| Primary metric: PR-AUC (average precision). Random baseline = positive rate ≈ 0.008 | Approved |
-| Also report precision, recall, F1 and MCC at a threshold chosen on validation data, and ROC-AUC as a supplement | Approved |
+| Primary metric: Average Precision (AP, `average_precision_score`; not trapezoidal PR-AUC). Random baseline = positive rate ≈ 0.008 | Approved |
+| Also report precision, recall, F1 and MCC at a threshold chosen on validation data, and ROC-AUC (threshold-independent, from predicted probabilities, like AP) as a supplement | Approved |
 | Never report accuracy alone (always predicting "not renamed" scores 99.2%) | Approved |
-| Report mean ± standard deviation over folds | Proposed |
+| Report mean ± sample standard deviation (ddof=1) over the 5 validation folds | Approved |
 
 ## 5. Comparisons to report
 
